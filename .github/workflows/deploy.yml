@@ -28,10 +28,10 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
-        run: npm run build -- --base-href=/manifesto/
+        run: npx ng build --base-href=/manifesto/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
