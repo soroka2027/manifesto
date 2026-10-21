@@ -1,0 +1,56 @@
+<div class="page">
+  <!-- LEFT SIDE -->
+  <aside class="sidebar">
+    <!-- Language switch -->
+    <div class="lang-switch">
+      <button
+        [class.active]="currentLang === 'uk'"
+        (click)="switchLang('uk')">
+        ua
+      </button>
+      <span class="sep">|</span>
+      <button
+        [class.active]="currentLang === 'en'"
+        (click)="switchLang('en')">
+        eng
+      </button>
+    </div>
+
+    <!-- Logo + & Grok -->
+    <a href="https://x.ai" target="_blank" rel="noopener" class="logo-block">
+      <div class="logo-circle">
+        <img src="assets/logo.png" alt="SOROKA" class="logo-img" />
+      </div>
+      <span class="grok-link">&amp; Grok</span>
+    </a>
+
+    <!-- Typing Hello World -->
+    <app-hello-world></app-hello-world>
+
+    <!-- Navigation -->
+    <nav class="menu">
+      @for (item of menuItems; track item.path) {
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          class="menu-link">
+          {{ currentLang === 'uk' ? item.labelUk : item.labelEn }}
+        </a>
+      }
+    </nav>
+  </aside>
+
+  <!-- RIGHT SIDE -->
+  <main class="content">
+    <div class="text-block">
+      <p class="lead">{{ t.p1 }}</p>
+      <p>{{ t.p2 }}</p>
+      <p>{{ t.p3 }}</p>
+      <p class="mt">{{ t.p4 }}</p>
+      <h2 class="manifest-title">{{ t.title }}</h2>
+      <p class="mt">{{ t.p5 }}</p>
+      <p>{{ t.p6 }}</p>
+      <p class="call-to-action">{{ t.p7 }}</p>
+    </div>
+  </main>
+</div>
