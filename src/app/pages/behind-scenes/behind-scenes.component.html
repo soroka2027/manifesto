@@ -1,49 +1,71 @@
 <div class="page">
-  <!-- Top bar: title + language switch -->
-  <header class="top-bar">
-    <h1 class="page-title">{{ intro.title }}</h1>
+  <aside class="sidebar">
+    <nav class="mobile-nav">
+      @for (item of menuItems; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active" class="mobile-nav-link">
+          {{ currentLang === 'uk' ? item.labelUk : item.labelEn }}
+        </a>
+      }
+    </nav>
+
     <div class="lang-switch">
       <button [class.active]="currentLang === 'uk'" (click)="switchLang('uk')">ua</button>
       <span class="sep">|</span>
       <button [class.active]="currentLang === 'en'" (click)="switchLang('en')">eng</button>
     </div>
-  </header>
 
-  <!-- Intro explanation -->
-  <p class="intro-text">{{ intro.text }}</p>
+    <a href="https://x.ai" target="_blank" rel="noopener" class="logo-block">
+      <div class="logo-circle">
+        <img src="assets/logo.png" alt="SOROKA" class="logo-img" />
+      </div>
+      <span class="grok-link">&amp; Grok</span>
+    </a>
 
-  <!-- Chat area -->
-  <div class="chat">
-    @for (msg of messages; track $index) {
-      <div class="message" [class.user]="msg.role === 'user'" [class.grok]="msg.role === 'grok'">
-        @if (msg.role === 'grok' && msg.thinkingTime) {
-          <div class="thinking">
-            <span class="bulb">💡</span>
-            <span class="thinking-label">
-              {{ currentLang === 'uk' ? 'Розмірковування протягом' : 'Thinking for' }}
-              {{ msg.thinkingTime }}
-            </span>
-          </div>
-        }
+    <nav class="desktop-menu">
+      @for (item of menuItems; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active" class="menu-link">
+          {{ currentLang === 'uk' ? item.labelUk : item.labelEn }}
+        </a>
+      }
+    </nav>
+  </aside>
 
+  <main class="content">
+    <h1 class="page-title">{{ currentLang === 'uk' ? 'За лаштунками' : 'Behind the Scenes' }}</h1>
+    <p class="intro-text">{{ intro }}</p>
+
+    <div class="chat-page">
+      <div class="message user">
         <div class="bubble">
-          <div class="bubble-text" [innerText]="getText(msg)"></div>
-
-          @if (msg.partial) {
-            <div class="partial-dots">·····</div>
-            <div class="bubble-text end" [innerText]="getEndText(msg)"></div>
-          }
+          {{ currentLang === 'uk' ? current.userUk : current.userEn }}
         </div>
       </div>
-    }
-  </div>
 
-  <!-- Bottom navigation -->
-  <nav class="bottom-nav">
-    @for (item of navItems; track item.path) {
-      <a [routerLink]="item.path" routerLinkActive="active" class="nav-link">
-        {{ currentLang === 'uk' ? item.labelUk : item.labelEn }}
-      </a>
-    }
-  </nav>
+      <div class="message grok">
+        <div class="thinking">
+          <span class="bulb">💡</span>
+          <span>
+            {{ currentLang === 'uk' ? 'Розмірковування протягом' : 'Thinking for' }}
+            {{ current.thinkingTime }}
+          </span>
+        </div>
+        <div class="bubble">
+          <div class="bubble-text">{{ currentLang === 'uk' ? current.grokStartUk : current.grokStartEn }}</div>
+          <div class="partial-dots">·····</div>
+          <div class="bubble-text">{{ currentLang === 'uk' ? current.grokEndUk : current.grokEndEn }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-switcher">
+      @for (d of dialogues; track $index) {
+        <button
+          class="page-btn"
+          [class.active]="currentPage === $index"
+          (click)="goToPage($index)">
+          {{ $index + 1 }}
+        </button>
+      }
+    </div>
+  </main>
 </div>
