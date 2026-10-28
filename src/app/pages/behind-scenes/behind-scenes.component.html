@@ -1,0 +1,49 @@
+<div class="page">
+  <!-- Top bar: title + language switch -->
+  <header class="top-bar">
+    <h1 class="page-title">{{ intro.title }}</h1>
+    <div class="lang-switch">
+      <button [class.active]="currentLang === 'uk'" (click)="switchLang('uk')">ua</button>
+      <span class="sep">|</span>
+      <button [class.active]="currentLang === 'en'" (click)="switchLang('en')">eng</button>
+    </div>
+  </header>
+
+  <!-- Intro explanation -->
+  <p class="intro-text">{{ intro.text }}</p>
+
+  <!-- Chat area -->
+  <div class="chat">
+    @for (msg of messages; track $index) {
+      <div class="message" [class.user]="msg.role === 'user'" [class.grok]="msg.role === 'grok'">
+        @if (msg.role === 'grok' && msg.thinkingTime) {
+          <div class="thinking">
+            <span class="bulb">💡</span>
+            <span class="thinking-label">
+              {{ currentLang === 'uk' ? 'Розмірковування протягом' : 'Thinking for' }}
+              {{ msg.thinkingTime }}
+            </span>
+          </div>
+        }
+
+        <div class="bubble">
+          <div class="bubble-text" [innerText]="getText(msg)"></div>
+
+          @if (msg.partial) {
+            <div class="partial-dots">·····</div>
+            <div class="bubble-text end" [innerText]="getEndText(msg)"></div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Bottom navigation -->
+  <nav class="bottom-nav">
+    @for (item of navItems; track item.path) {
+      <a [routerLink]="item.path" routerLinkActive="active" class="nav-link">
+        {{ currentLang === 'uk' ? item.labelUk : item.labelEn }}
+      </a>
+    }
+  </nav>
+</div>
