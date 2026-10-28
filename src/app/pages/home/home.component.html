@@ -16,16 +16,18 @@
       </button>
     </div>
 
-    <!-- Logo + & Grok -->
-    <a href="https://x.ai" target="_blank" rel="noopener" class="logo-block">
-      <div class="logo-circle">
-        <img src="assets/logo.png" alt="SOROKA" class="logo-img" />
-      </div>
-      <span class="grok-link">&amp; Grok</span>
-    </a>
+    <!-- Logo + & Grok (centered group) -->
+    <div class="brand-block">
+      <a href="https://x.ai" target="_blank" rel="noopener" class="logo-block">
+        <div class="logo-circle">
+          <img src="assets/logo.png" alt="SOROKA" class="logo-img" />
+        </div>
+        <span class="grok-link">&amp; Grok</span>
+      </a>
 
-    <!-- Typing Hello World -->
-    <app-hello-world></app-hello-world>
+      <!-- Typing Hello World -->
+      <app-hello-world [lang]="currentLang"></app-hello-world>
+    </div>
 
     <!-- Navigation -->
     <nav class="menu">
@@ -47,7 +49,7 @@
       <p>{{ t.p2 }}</p>
       <p>{{ t.p3 }}</p>
       <p class="mt">{{ t.p4 }}</p>
-      <h2 class="manifest-title">{{ t.title }}</h2>
+      <a [routerLink]="['/manifest']" class="manifest-title">{{ t.title }}</a>
       <p class="mt">{{ t.p5 }}</p>
       <p>{{ t.p6 }}</p>
       <p class="call-to-action">{{ t.p7 }}</p>

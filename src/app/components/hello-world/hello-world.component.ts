@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,19 +13,20 @@ import { CommonModule } from '@angular/common';
   `,
   styles: [`
     .typing {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
       font-weight: 600;
-      color: #1a1a1a;
-      margin: 1.5rem 0 2rem;
-      min-height: 2.4rem;
-      letter-spacing: 0.02em;
+      color: #101010;
+      margin: 1.2rem 0 1.8rem;
+      min-height: 2.2rem;
+      letter-spacing: 0.05em;
+      text-align: center;
     }
 
     .cursor {
       display: inline-block;
       margin-left: 2px;
-      color: #00b7c2;
+      color: #3CBCE7;
       font-weight: 300;
     }
 
@@ -38,40 +39,72 @@ import { CommonModule } from '@angular/common';
       50% { opacity: 0; }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 960px) {
       .typing {
-        font-size: 1.5rem;
-        margin: 1.2rem 0 1.5rem;
+        font-size: 24px;
+        margin: 1rem 0 1.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .typing {
+        font-size: 22px;
       }
     }
   `]
 })
-export class HelloWorldComponent implements OnInit, OnDestroy {
-  fullText = 'Привіт Світ!';
+export class HelloWorldComponent implements OnInit, OnChanges, OnDestroy {
+  @Input() lang: 'uk' | 'en' = 'uk';
+
   displayedText = '';
   isTyping = true;
   private index = 0;
   private intervalId: any;
 
+  private texts = {
+    uk: 'Привіт Світ!',
+    en: 'Hello World!'
+  };
+
   ngOnInit() {
-    this.startTyping();
+    this.restartTyping();
   }
 
-  ngOnDestroy() {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['lang'] && !changes['lang'].firstChange) {
+      this.restartTyping();
     }
   }
 
+  ngOnDestroy() {
+    this.clearTimer();
+  }
+
+  private restartTyping() {
+    this.clearTimer();
+    this.displayedText = '';
+    this.index = 0;
+    this.isTyping = true;
+    this.startTyping();
+  }
+
   private startTyping() {
+    const fullText = this.texts[this.lang];
     this.intervalId = setInterval(() => {
-      if (this.index < this.fullText.length) {
-        this.displayedText += this.fullText.charAt(this.index);
+      if (this.index < fullText.length) {
+        this.displayedText += fullText.charAt(this.index);
         this.index++;
       } else {
         this.isTyping = false;
-        clearInterval(this.intervalId);
+        this.clearTimer();
       }
-    }, 120); // typing speed
+    }, 110);
+  }
+
+  private clearTimer() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 }
