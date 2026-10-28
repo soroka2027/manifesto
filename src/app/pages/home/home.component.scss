@@ -40,9 +40,13 @@
     cursor: pointer;
     font-family: inherit;
 
-    &:hover,
-    &.active {
+    &:hover {
       color: #3CBCE7;
+    }
+
+    &.active {
+      color: #101010;
+      font-weight: 600;
     }
   }
 
@@ -120,11 +124,16 @@
   transition: color 0.25s ease;
   line-height: 130%;
 
-  &:hover,
-  &.active {
+  &:hover {
     color: #3CBCE7;
   }
+
+  &.active {
+    color: #101010;
+    font-weight: 500;
+  }
 }
+
 
 /* ========== RIGHT CONTENT ========== */
 .content {
