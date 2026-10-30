@@ -11,7 +11,7 @@
 .content {
   flex: 1;
   min-width: 0;
-  padding: 1.8rem 2.2rem 1.4rem 2.5rem;
+  padding: 1.6rem 2rem 1.2rem 2.2rem;
   display: flex;
   flex-direction: column;
 }
@@ -20,7 +20,7 @@
   font-size: 22px;
   font-weight: 600;
   color: #101010;
-  margin: 0 0 1.4rem;
+  margin: 0 0 1rem;
   line-height: 130%;
 }
 
@@ -54,23 +54,24 @@
 
 .page-switcher {
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: center;
   gap: 0.45rem;
-  margin-top: auto;
-  padding-top: 1.2rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
   border-top: 1px solid #eee;
   flex-shrink: 0;
 }
 
 .page-btn {
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   border: 1.5px solid #ddd;
   background: #fff;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: #666;
   cursor: pointer;
