@@ -21,22 +21,26 @@
           </span>
         </div>
         <div class="bubble">
-          <div class="bubble-text">{{ currentLang === 'uk' ? current.grokStartUk : current.grokStartEn }}</div>
-          <div class="partial-dots">·····</div>
-          <div class="bubble-text">{{ currentLang === 'uk' ? current.grokEndUk : current.grokEndEn }}</div>
+          {{ currentLang === 'uk' ? current.grokUk : current.grokEn }}
         </div>
       </div>
     </div>
 
     <div class="page-switcher">
-      @for (d of dialogues; track $index) {
-        <button
-          class="page-btn"
-          [class.active]="currentPage === $index"
-          (click)="goToPage($index)">
-          {{ $index + 1 }}
-        </button>
+      <button class="nav-btn" (click)="prev()" [disabled]="currentPage === 0">«</button>
+      @for (item of visiblePages; track $index) {
+        @if (item === 'ellipsis') {
+          <span class="ellipsis">…</span>
+        } @else {
+          <button
+            class="page-btn"
+            [class.active]="currentPage === item"
+            (click)="goToPage(item)">
+            {{ item + 1 }}
+          </button>
+        }
       }
+      <button class="nav-btn" (click)="next()" [disabled]="currentPage === totalPages - 1">»</button>
     </div>
   </main>
 </div>
