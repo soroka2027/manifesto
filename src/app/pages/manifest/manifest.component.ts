@@ -10,6 +10,7 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
   styleUrls: ['./manifest.component.scss']
 })
 export class ManifestComponent {
+  // FINAL5
   currentLang: 'uk' | 'en' = 'uk';
   currentPage = 0;
 
