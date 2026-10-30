@@ -6,20 +6,17 @@
 
     <div class="text-block">
       @for (p of paragraphs; track $index) {
-        <p [class.quote]="$index === 4 && currentPage === 0"
-           [class.strong]="$index >= paragraphs.length - 3 && currentPage === pages.length - 1">
-          {{ p }}
-        </p>
+        <p>{{ p }}</p>
       }
     </div>
 
     <div class="page-switcher">
-      @for (pg of pages; track $index) {
+      @for (i of pageIndexes; track i) {
         <button
           class="page-btn"
-          [class.active]="currentPage === $index"
-          (click)="goToPage($index)">
-          {{ $index + 1 }}
+          [class.active]="currentPage === i"
+          (click)="goToPage(i)">
+          {{ i + 1 }}
         </button>
       }
     </div>
