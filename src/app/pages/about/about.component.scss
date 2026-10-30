@@ -1,0 +1,116 @@
+.page {
+  display: flex;
+  min-height: 100vh;
+  max-width: 1300px;
+  margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
+  background: #fff;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 2.2rem 2.5rem 1.8rem 2.8rem; /* left padding from sidebar */
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #101010;
+  margin: 0 0 1.2rem;
+}
+
+.collage-wrap {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  max-width: 720px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.collage-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Page 2: semi-transparent white overlay + text */
+.collage-wrap.with-text .collage-img {
+  filter: none;
+}
+
+.text-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.82);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 2.2rem;
+  overflow-y: auto;
+}
+
+.line {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.05em;
+  color: #101010;
+  margin: 0 0 0.55rem;
+  text-align: left;
+}
+
+.page-switcher {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+.page-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid #ddd;
+  background: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover { border-color: #3CBCE7; color: #3CBCE7; }
+  &.active {
+    background: #3CBCE7;
+    border-color: #3CBCE7;
+    color: #fff;
+  }
+}
+
+@media (max-width: 960px) {
+  .page { flex-direction: column; }
+  .content { padding: 1.2rem 1.1rem 1.4rem; }
+  .page-title { font-size: 20px; }
+  .collage-wrap { max-width: 100%; }
+  .text-overlay { padding: 1.4rem 1.3rem; }
+  .line { font-size: 16px; }
+  .page-switcher { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .content { padding: 1rem 0.85rem 1.2rem; }
+  .page-title { font-size: 18px; }
+  .text-overlay { padding: 1.1rem 1rem; }
+  .line { font-size: 15px; margin-bottom: 0.4rem; }
+  .page-btn { width: 32px; height: 32px; font-size: 12px; }
+}
