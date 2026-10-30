@@ -152,6 +152,32 @@ export class ManifestComponent {
     this.currentLang = lang;
   }
 
+
+  get visiblePages(): (number | 'ellipsis')[] {
+    const total = this.totalPages;
+    const current = this.currentPage;
+    if (total <= 7) {
+      return Array.from({ length: total }, (_, i) => i);
+    }
+    const pages: (number | 'ellipsis')[] = [];
+    pages.push(0); // first
+    if (current > 2) pages.push('ellipsis');
+    for (let i = Math.max(1, current - 1); i <= Math.min(total - 2, current + 1); i++) {
+      if (!pages.includes(i)) pages.push(i);
+    }
+    if (current < total - 3) pages.push('ellipsis');
+    if (!pages.includes(total - 1)) pages.push(total - 1);
+    return pages;
+  }
+
+  prev() {
+    this.goToPage(this.currentPage - 1);
+  }
+
+  next() {
+    this.goToPage(this.currentPage + 1);
+  }
+
   goToPage(index: number) {
     if (index >= 0 && index < this.totalPages) {
       this.currentPage = index;
