@@ -11,7 +11,6 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 })
 export class AboutComponent {
   currentLang: 'uk' | 'en' = 'uk';
-  currentPage = 0; // 0 = collage only, 1 = collage + text
 
   linesUk = [
     'SOROKA це реальна персона.',
@@ -47,11 +46,5 @@ export class AboutComponent {
 
   switchLang(lang: 'uk' | 'en') {
     this.currentLang = lang;
-  }
-
-  goToPage(index: number) {
-    if (index >= 0 && index <= 1) {
-      this.currentPage = index;
-    }
   }
 }
