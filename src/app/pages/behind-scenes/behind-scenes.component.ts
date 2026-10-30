@@ -137,7 +137,7 @@ export class BehindScenesComponent {
     },
     {
       userUk:
-        'Перш ніж описувати зміну парадигми аполітичності: я цивільна особа, підтримую ЗСУ і спротив ворогу. Політику Зеленського визначаю як таку, що ведеться всупереч національним інтересам.',
+        'Перш ніж ми перейдемо до описання моєї точки зору щодо необхідності зміни парадигми аполітичності, треба додати наступну важливу зазначити мою позицію. Я цивільна особа, що підтримує ЗСУ і політику супротиву ворогу у будь-яких його намаганнях безкарно вбивати українців, знищувати нашу українську державу, намаганнях продовжувати захоплювати Україну і її території, які чітко визначені у міжнародному праві.',
       userEn:
         'Before describing the shift from apoliticalness: I am a civilian, I support the Armed Forces and resistance to the enemy. I define Zelenskyy’s policy as contrary to national interests.',
       thinkingTime: '—',
@@ -189,9 +189,9 @@ export class BehindScenesComponent {
       userEn: 'Give the exact Giddens quote as it is in his text.',
       thinkingTime: '3s',
       grokUk:
-        'З Sociology (Giddens):\n\n«Sociology is a subject with a curiously mixed reputation… far from propelling its students towards the barricades is more likely to bore them to death with platitudes.»',
+        'Ось точна цитата Ентоні Гіденса з його підручника Sociology (перше видання 1986, пізніше багато разів перевидавався):\n\n«Sociology is a subject with a curiously mixed reputation. On the one hand, it is associated by many people with the fomenting of rebellion, a stimulus to revolt. Even though they may have only a vague notion of what topics are studied in sociology, they somehow associate sociology with subversion, with the shrill demands of unkempt student militants. On the other hand, quite a different view of the subject is often entertained — perhaps more commonly than the first — by individuals who have had some direct acquaintance with it in schools and universities. This is that in fact it is rather a dull and uninstructive enterprise, which far from propelling its students towards the barricades is more likely to bore them to death with platitudes.»\n\nКоротка, найчастіше цитована частина (яку ти використовувала):\n«…far from propelling its students towards the barricades is more likely to bore them to death with platitudes.»\n\nЦе оригінальний англійський текст Гіденса.',
       grokEn:
-        'From Sociology (Giddens):\n\n“Sociology is a subject with a curiously mixed reputation… far from propelling its students towards the barricades is more likely to bore them to death with platitudes.”'
+        'Here is the exact quote by Anthony Giddens from his textbook Sociology (first edition 1986, later reprinted many times):\n\n“Sociology is a subject with a curiously mixed reputation. On the one hand, it is associated by many people with the fomenting of rebellion, a stimulus to revolt. Even though they may have only a vague notion of what topics are studied in sociology, they somehow associate sociology with subversion, with the shrill demands of unkempt student militants. On the other hand, quite a different view of the subject is often entertained — perhaps more commonly than the first — by individuals who have had some direct acquaintance with it in schools and universities. This is that in fact it is rather a dull and uninstructive enterprise, which far from propelling its students towards the barricades is more likely to bore them to death with platitudes.”\n\nThe short, most often cited part (which you used):\n“…far from propelling its students towards the barricades is more likely to bore them to death with platitudes.”\n\nThis is Giddens’s original English text.'
     }
   ];
 
