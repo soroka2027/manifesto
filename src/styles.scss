@@ -41,3 +41,66 @@ img {
   display: block;
   max-width: 100%;
 }
+
+/* ===== Halloween seasonal accents ===== */
+:root {
+  --halloween-orange: #e87722;
+  --halloween-purple: #5b2c6f;
+  --halloween-night: #1a1224;
+}
+
+/* Subtle bat silhouettes in corners (decorative only) */
+body::before,
+body::after {
+  content: '🦇';
+  position: fixed;
+  z-index: 9999;
+  font-size: 22px;
+  opacity: 0.55;
+  pointer-events: none;
+  animation: bat-float 6s ease-in-out infinite;
+}
+
+body::before {
+  top: 12px;
+  right: 18px;
+  animation-delay: 0s;
+}
+
+body::after {
+  content: '🎃';
+  bottom: 16px;
+  left: 14px;
+  font-size: 26px;
+  opacity: 0.5;
+  animation: pumpkin-glow 3s ease-in-out infinite;
+}
+
+@keyframes bat-float {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-10px) rotate(6deg); }
+}
+
+@keyframes pumpkin-glow {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(232, 119, 34, 0.4)); transform: scale(1); }
+  50% { filter: drop-shadow(0 0 8px rgba(232, 119, 34, 0.7)); transform: scale(1.06); }
+}
+
+/* Seasonal badge */
+.halloween-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--halloween-orange);
+  margin-top: 0.75rem;
+  opacity: 0.9;
+}
+
+/* Soft orange hover alternative for festive feel on primary accent */
+.page-btn.active,
+.nav-btn:not(:disabled):active {
+  box-shadow: 0 0 0 2px rgba(232, 119, 34, 0.25);
+}

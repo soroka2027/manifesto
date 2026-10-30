@@ -38,6 +38,7 @@ import { HelloWorldComponent } from '../hello-world/hello-world.component';
           <span class="grok-link">&amp; Grok</span>
         </a>
         <app-hello-world [lang]="lang"></app-hello-world>
+        <div class="halloween-badge">🎃 Happy Halloween</div>
       </div>
 
       <!-- Desktop vertical menu -->

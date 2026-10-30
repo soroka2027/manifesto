@@ -159,3 +159,28 @@
   .grok-link { font-size: 18px; }
   .mobile-nav-link { font-size: 12px; }
 }
+
+
+.halloween-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.6rem;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #e87722;
+  animation: badge-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 960px) {
+  .halloween-badge {
+    justify-content: center;
+    width: 100%;
+  }
+}
