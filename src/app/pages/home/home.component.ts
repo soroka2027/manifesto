@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { HelloWorldComponent } from '../../components/hello-world/hello-world.component';
+import { RouterLink } from '@angular/router';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, HelloWorldComponent],
+  imports: [CommonModule, RouterLink, SidebarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

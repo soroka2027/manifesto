@@ -1,34 +1,5 @@
 <div class="page">
-  <aside class="sidebar">
-    <nav class="mobile-nav">
-      @for (item of menuItems; track item.path) {
-        <a [routerLink]="item.path" routerLinkActive="active" class="mobile-nav-link">
-          {{ currentLang === 'uk' ? item.labelUk : item.labelEn }}
-        </a>
-      }
-    </nav>
-
-    <div class="lang-switch">
-      <button [class.active]="currentLang === 'uk'" (click)="switchLang('uk')">ua</button>
-      <span class="sep">|</span>
-      <button [class.active]="currentLang === 'en'" (click)="switchLang('en')">eng</button>
-    </div>
-
-    <a href="https://x.ai" target="_blank" rel="noopener" class="logo-block">
-      <div class="logo-circle">
-        <img src="assets/logo.png" alt="SOROKA" class="logo-img" />
-      </div>
-      <span class="grok-link">&amp; Grok</span>
-    </a>
-
-    <nav class="desktop-menu">
-      @for (item of menuItems; track item.path) {
-        <a [routerLink]="item.path" routerLinkActive="active" class="menu-link">
-          {{ currentLang === 'uk' ? item.labelUk : item.labelEn }}
-        </a>
-      }
-    </nav>
-  </aside>
+  <app-sidebar [lang]="currentLang" (langChange)="switchLang($event)"></app-sidebar>
 
   <main class="content">
     <h1 class="page-title">{{ currentLang === 'uk' ? 'За лаштунками' : 'Behind the Scenes' }}</h1>

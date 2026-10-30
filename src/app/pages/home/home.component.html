@@ -1,48 +1,6 @@
 <div class="page">
-  <!-- LEFT SIDE -->
-  <aside class="sidebar">
-    <!-- Language switch -->
-    <div class="lang-switch">
-      <button
-        [class.active]="currentLang === 'uk'"
-        (click)="switchLang('uk')">
-        ua
-      </button>
-      <span class="sep">|</span>
-      <button
-        [class.active]="currentLang === 'en'"
-        (click)="switchLang('en')">
-        eng
-      </button>
-    </div>
+  <app-sidebar [lang]="currentLang" (langChange)="switchLang($event)"></app-sidebar>
 
-    <!-- Logo + & Grok (centered group) -->
-    <div class="brand-block">
-      <a href="https://x.ai" target="_blank" rel="noopener" class="logo-block">
-        <div class="logo-circle">
-          <img src="assets/logo.png" alt="SOROKA" class="logo-img" />
-        </div>
-        <span class="grok-link">&amp; Grok</span>
-      </a>
-
-      <!-- Typing Hello World -->
-      <app-hello-world [lang]="currentLang"></app-hello-world>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="menu">
-      @for (item of menuItems; track item.path) {
-        <a
-          [routerLink]="item.path"
-          routerLinkActive="active"
-          class="menu-link">
-          {{ currentLang === 'uk' ? item.labelUk : item.labelEn }}
-        </a>
-      }
-    </nav>
-  </aside>
-
-  <!-- RIGHT SIDE -->
   <main class="content">
     <div class="text-block">
       <p class="lead">{{ t.p1 }}</p>

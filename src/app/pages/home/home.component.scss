@@ -5,139 +5,9 @@
   margin: 0 auto;
 }
 
-/* ========== LEFT SIDEBAR ========== */
-.sidebar {
-  width: 360px;
-  min-width: 300px;
-  padding: 2.5rem 1.5rem 2rem 2.5rem;
-  border-right: 1px solid #e8e8e8;
-  display: flex;
-  flex-direction: column;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-}
-
-/* Language switch */
-.lang-switch {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 2rem;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-
-  button {
-    color: #888;
-    font-weight: 500;
-    padding: 0.15rem 0.3rem;
-    transition: color 0.25s ease;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-
-    &:hover {
-      color: #3CBCE7;
-    }
-
-    &.active {
-      color: #101010;
-      font-weight: 600;
-    }
-  }
-
-  .sep {
-    color: #ccc;
-  }
-}
-
-/* Brand block: logo + greeting centered together */
-.brand-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-/* Logo block */
-.logo-block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  text-decoration: none;
-  margin-bottom: 0.3rem;
-
-  &:hover .grok-link {
-    color: #3CBCE7;
-  }
-}
-
-.logo-circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1.5px solid #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  flex-shrink: 0;
-
-  .logo-img {
-    width: 78%;
-    height: auto;
-    object-fit: contain;
-  }
-}
-
-.grok-link {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #101010;
-  letter-spacing: 0.05em;
-  transition: color 0.25s ease;
-  white-space: nowrap;
-}
-
-/* Menu – left aligned with padding to match brand */
-.menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  padding-left: 0.5rem;
-}
-
-.menu-link {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  color: #101010;
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  transition: color 0.25s ease;
-  line-height: 130%;
-
-  &:hover {
-    color: #3CBCE7;
-  }
-
-  &.active {
-    color: #101010;
-    font-weight: 500;
-  }
-}
-
-
-/* ========== RIGHT CONTENT ========== */
 .content {
   flex: 1;
+  min-width: 0;
   padding: 3.2rem 3.5rem 3rem 3rem;
   display: flex;
   align-items: flex-start;
@@ -163,9 +33,7 @@
     color: #101010;
   }
 
-  .mt {
-    margin-top: 1.5rem;
-  }
+  .mt { margin-top: 1.5rem; }
 
   .manifest-title {
     display: inline-block;
@@ -178,11 +46,7 @@
     text-decoration: none;
     margin: 0.5rem 0 1.2rem;
     transition: color 0.25s ease;
-
-    &:hover {
-      color: #3CBCE7;
-      cursor: pointer;
-    }
+    &:hover { color: #3CBCE7; cursor: pointer; }
   }
 
   .call-to-action {
@@ -194,100 +58,22 @@
   }
 }
 
-/* ========== RESPONSIVE (tablet & mobile) ========== */
 @media (max-width: 960px) {
-  .page {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-    border-right: none;
-    border-bottom: 1px solid #e8e8e8;
-    padding: 1.4rem 1.2rem 1.6rem;
-    align-items: stretch;
-  }
-
-  .lang-switch {
-    justify-content: flex-end;
-    margin-bottom: 1.2rem;
-  }
-
-  .brand-block {
-    align-items: center;
-    margin-bottom: 1.2rem;
-  }
-
-  .menu {
-    padding-left: 0;
-    width: 100%;
-    gap: 0.7rem;
-  }
-
-  .menu-link {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 0.35rem 0;
-    font-size: 18px;
-  }
-
-  .content {
-    padding: 1.8rem 1.4rem 2.5rem;
-  }
-
+  .page { flex-direction: column; }
+  .content { padding: 1.8rem 1.4rem 2.5rem; }
   .text-block {
     max-width: 100%;
-
-    p {
-      font-size: 17px;
-    }
-
-    .lead {
-      font-size: 20px;
-    }
-
-    .manifest-title {
-      font-size: 20px;
-    }
+    p { font-size: 17px; }
+    .lead { font-size: 20px; }
+    .manifest-title { font-size: 20px; }
   }
 }
 
 @media (max-width: 480px) {
-  .sidebar {
-    padding: 1.1rem 1rem 1.4rem;
-  }
-
-  .logo-circle {
-    width: 64px;
-    height: 64px;
-  }
-
-  .grok-link {
-    font-size: 20px;
-  }
-
-  .menu-link {
-    font-size: 17px;
-  }
-
-  .content {
-    padding: 1.4rem 1rem 2.2rem;
-  }
-
+  .content { padding: 1.4rem 1rem 2.2rem; }
   .text-block {
-    p {
-      font-size: 16px;
-    }
-
-    .lead {
-      font-size: 18px;
-    }
-
-    .manifest-title {
-      font-size: 18px;
-    }
+    p { font-size: 16px; }
+    .lead { font-size: 18px; }
+    .manifest-title { font-size: 18px; }
   }
 }

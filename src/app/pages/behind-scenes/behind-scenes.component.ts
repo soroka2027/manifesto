@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 interface Dialogue {
   userUk: string;
@@ -15,7 +15,7 @@ interface Dialogue {
 @Component({
   selector: 'app-behind-scenes',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, SidebarComponent],
   templateUrl: './behind-scenes.component.html',
   styleUrls: ['./behind-scenes.component.scss']
 })
@@ -26,14 +26,6 @@ export class BehindScenesComponent {
   introUk = 'Цей розділ підсвічує взаємодію SOROKA & Grok. Ключові промпти, час розмірковування і часткові відповіді — так виглядала наша бесіда під час написання маніфесту.';
   introEn = 'This section highlights the interaction between SOROKA & Grok. Key prompts, thinking time and partial answers — this is how our conversation looked while writing the manifesto.';
 
-  menuItems = [
-    { path: '/', labelUk: 'Головна', labelEn: 'Home' },
-    { path: '/manifest', labelUk: 'Маніфест', labelEn: 'Manifesto' },
-    { path: '/behind-scenes', labelUk: 'За лаштунками', labelEn: 'Behind the Scenes' },
-    { path: '/infospace', labelUk: 'Інфопростір', labelEn: 'Infospace' },
-    { path: '/visualization', labelUk: 'Візуалізація', labelEn: 'Visualization' },
-    { path: '/about', labelUk: 'Про автора', labelEn: 'About' }
-  ];
 
   dialogues: Dialogue[] = [
     {
