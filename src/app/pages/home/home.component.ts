@@ -13,34 +13,32 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 export class HomeComponent {
   currentLang: 'uk' | 'en' = 'uk';
 
-  menuItems = [
-    { path: '/manifest', labelUk: 'Маніфест', labelEn: 'Manifesto' },
-    { path: '/behind-scenes', labelUk: 'За лаштунками', labelEn: 'Behind the Scenes' },
-    { path: '/infospace', labelUk: 'Інфопростір', labelEn: 'Infospace' },
-    { path: '/visualization', labelUk: 'Візуалізація', labelEn: 'Visualization' },
-    { path: '/about', labelUk: 'Про автора', labelEn: 'About the Author' }
-  ];
-
   textUk = {
     p1: 'Я довго була аполітичною.',
-    p2: 'Особливості моєї освіти сформували цю позицію.',
-    p3: 'Війна і топ-корупція під час війни показали мені, що аполітичність має свою ціну.',
-    p4: 'Написала статтю-маніфест:',
+    p2: 'У тому сенсі, що я свідомо усунулася від контролю за політичними процесами, добровільно відмовилася від відповідальності за державний курс країни між виборами, і здебільшого мені було байдуже до діяльності державних інститутів.',
+    p3: 'На практиці моя аполітичність звучала десь так:',
+    p4: '«Усі вони однакові, яка різниця, хто при владі — декорації змінюються, суть залишається».',
+    p5: 'Особливості мого життя і моєї освіти сформували цю позицію.',
+    p6: 'Війна і топ-корупція під час війни показали мені, що аполітичність має свою ціну.',
+    p7: 'Написала статтю-маніфест:',
     title: '«Війна як наслідок аполітичності»',
-    p5: 'Це не заклик на барикади у буквальному сенсі.',
-    p6: 'Це розповідь українки, яка усвідомила важливість своєї ролі у політиці, тому більше не мовчить, а діє.',
-    p7: 'Читайте. Думайте. Відчувайте. Дійте.'
+    p8: 'Це не заклик на барикади у буквальному сенсі.',
+    p9: 'Це розповідь українки, яка усвідомила важливість своєї ролі у політиці, тому більше не мовчить, а діє.',
+    p10: 'Читайте. Думайте. Відчувайте. Дійте.'
   };
 
   textEn = {
     p1: 'I was apolitical for a long time.',
-    p2: 'The peculiarities of my education shaped this position.',
-    p3: 'War and top-level corruption during the war showed me that apoliticalness has a price.',
-    p4: 'I wrote a manifesto article:',
+    p2: 'In the sense that I consciously stepped away from monitoring political processes, voluntarily refused responsibility for the country’s course between elections, and for the most part was indifferent to the work of state institutions.',
+    p3: 'In practice my apoliticalness sounded something like this:',
+    p4: '“They are all the same; what difference does it make who is in power — the scenery changes, the essence remains.”',
+    p5: 'The circumstances of my life and education shaped this position.',
+    p6: 'War and top-level corruption during the war showed me that apoliticalness has a price.',
+    p7: 'I wrote a manifesto article:',
     title: '“War as a Consequence of Apoliticalness”',
-    p5: 'This is not a call to the barricades in the literal sense.',
-    p6: 'This is the story of a Ukrainian woman who realized the importance of her role in politics, and therefore no longer remains silent, but acts.',
-    p7: 'Read. Think. Feel. Act.'
+    p8: 'This is not a call to the barricades in the literal sense.',
+    p9: 'This is the story of a Ukrainian woman who realized the importance of her role in politics, and therefore no longer remains silent, but acts.',
+    p10: 'Read. Think. Feel. Act.'
   };
 
   get t() {

@@ -49,6 +49,14 @@
     &:hover { color: #3CBCE7; cursor: pointer; }
   }
 
+  .quote-line {
+    font-style: italic;
+    color: #101010;
+    border-left: 3px solid #3CBCE7;
+    padding-left: 0.85rem;
+    margin: 0.4rem 0 0.9rem;
+  }
+
   .call-to-action {
     margin-top: 1.8rem;
     font-weight: 500;
