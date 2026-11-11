@@ -11,31 +11,13 @@
 .content {
   flex: 1;
   min-width: 0;
-  padding: 1.2rem 1.2rem 1.2rem 1.6rem;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh;
   position: relative;
-}
-
-.page-title {
-  position: relative;
-  z-index: 3;
-  font-size: 28px;
-  font-weight: 600;
-  color: #101010;
-  margin: 0 0 0.6rem;
-}
-
-/* Stage: photo background + sources on the right */
-.stage {
-  position: relative;
-  flex: 1;
-  min-height: calc(100vh - 5.5rem);
-  display: block;
-  border-radius: 4px;
   overflow: hidden;
+  padding: 1.2rem 1.2rem 1.2rem 1.6rem;
 }
 
+/* Background covers entire content including under title */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -51,11 +33,89 @@
   display: block;
 }
 
-/* Hover cards over the photo (left-center) */
+.page-title {
+  position: relative;
+  z-index: 3;
+  font-size: 28px;
+  font-weight: 600;
+  color: #101010;
+  margin: 0 0 0.75rem;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Sources under title, left */
+.sources-panel {
+  position: relative;
+  z-index: 2;
+  width: 250px;
+  max-width: 40%;
+  padding: 0.35rem 0.4rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(255, 255, 255, 0.55) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: 12px;
+  max-height: calc(100vh - 5.5rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.source-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #111;
+  transition: background 0.15s ease;
+
+  &:hover,
+  &.active {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  &:hover .source-icon,
+  &.active .source-icon {
+    box-shadow: 0 0 0 2px #3CBCE7;
+  }
+}
+
+.source-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.15s ease;
+}
+
+.source-name {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hover cards */
 .hover-cards {
   position: absolute;
   left: 42%;
-  bottom: 14%;
+  bottom: 12%;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -155,129 +215,36 @@
   }
 }
 
-/* Sources panel — left under title, YouTube subscriptions style */
-.sources-panel {
-  position: absolute;
-  top: 0.4rem;
-  left: 0.5rem;
-  z-index: 2;
-  width: 250px;
-  max-width: 38%;
-  padding: 0.5rem 0.45rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.12rem;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.94) 0%,
-    rgba(255, 255, 255, 0.82) 75%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  overflow-y: auto;
-  max-height: calc(100% - 1rem);
-  scrollbar-width: thin;
-  border-radius: 12px 0 0 12px;
-}
-
-.source-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.45rem 0.55rem;
-  border-radius: 999px;
-  text-decoration: none;
-  color: #111;
-  transition: background 0.15s ease;
-
-  &:hover,
-  &.active {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
-  }
-
-  &:hover .source-icon,
-  &.active .source-icon {
-    box-shadow: 0 0 0 2px #3CBCE7;
-  }
-}
-
-.source-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  flex-shrink: 0;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.15s ease;
-}
-
-.source-name {
-  font-size: 13.5px;
-  font-weight: 500;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Mobile / tablet: stack */
 @media (max-width: 960px) {
   .page {
     flex-direction: column;
   }
 
   .content {
+    min-height: auto;
     padding: 1rem 0.9rem 1.2rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
   }
 
   .page-title {
     font-size: 22px;
   }
 
-  .stage {
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .hero-bg {
-    position: relative;
-    min-height: 320px;
-  }
-
-  .hero-bg-img {
-    object-fit: cover;
-    object-position: center center;
+  .sources-panel {
+    width: 100%;
+    max-width: none;
+    max-height: none;
+    background: rgba(255, 255, 255, 0.92);
   }
 
   .hover-cards {
     position: static;
     max-width: 100%;
-    margin: 0.75rem 0;
-    padding: 0 0.2rem;
-  }
-
-  .sources-panel {
-    position: static;
-    width: 100%;
-    max-width: none;
-    max-height: none;
-    background: #fff;
-    padding: 0.4rem 0.2rem 0.8rem;
-    border-radius: 0;
-  }
-
-  .stage {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero-bg {
-    order: -1;
+    margin: 0.75rem 0 0;
   }
 }
 

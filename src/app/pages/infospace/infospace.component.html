@@ -1,59 +1,57 @@
 <div class="page">
   <app-sidebar [lang]="currentLang" (langChange)="switchLang($event)"></app-sidebar>
 
-  <main class="content">
+  <main class="content" (mouseleave)="onHover(null)">
+    <!-- Full-area background photo -->
+    <div class="hero-bg" aria-hidden="true">
+      <img src="assets/infospace-hero.jpg" alt="" class="hero-bg-img" />
+    </div>
+
     <h1 class="page-title">{{ title }}</h1>
 
-    <div class="stage" (mouseleave)="onHover(null)">
-      <!-- Background photo -->
-      <div class="hero-bg" aria-hidden="true">
-        <img src="assets/infospace-hero.jpg" alt="" class="hero-bg-img" />
+    <!-- Hover cards -->
+    @if (hovered) {
+      <div class="hover-cards">
+        <a class="card media-card" [href]="hovered.link" target="_blank" rel="noopener noreferrer">
+          <div class="media-thumb nabu-thumb">
+            <span class="play">▶</span>
+          </div>
+          <div class="media-body">
+            <div class="media-title">{{ currentLang === 'uk' ? hovered.cardTitleUk : hovered.cardTitleEn }}</div>
+            <div class="media-meta">
+              <span>{{ hovered.nameUk }}</span>
+              <span>{{ currentLang === 'uk' ? hovered.cardMetaUk : hovered.cardMetaEn }}</span>
+            </div>
+          </div>
+        </a>
+        <a class="card comment-card" [href]="hovered.link" target="_blank" rel="noopener noreferrer">
+          <div class="comment-label">{{ currentLang === 'uk' ? 'Коментар' : 'Comment' }}</div>
+          <p>{{ currentLang === 'uk' ? hovered.commentUk : hovered.commentEn }}</p>
+        </a>
       </div>
+    }
 
-      <!-- Hover cards over photo -->
-      @if (hovered) {
-        <div class="hover-cards">
-          <a class="card media-card" [href]="hovered.link" target="_blank" rel="noopener noreferrer">
-            <div class="media-thumb nabu-thumb">
-              <span class="play">▶</span>
-            </div>
-            <div class="media-body">
-              <div class="media-title">{{ currentLang === 'uk' ? hovered.cardTitleUk : hovered.cardTitleEn }}</div>
-              <div class="media-meta">
-                <span>{{ hovered.nameUk }}</span>
-                <span>{{ currentLang === 'uk' ? hovered.cardMetaUk : hovered.cardMetaEn }}</span>
-              </div>
-            </div>
-          </a>
-          <a class="card comment-card" [href]="hovered.link" target="_blank" rel="noopener noreferrer">
-            <div class="comment-label">{{ currentLang === 'uk' ? 'Коментар' : 'Comment' }}</div>
-            <p>{{ currentLang === 'uk' ? hovered.commentUk : hovered.commentEn }}</p>
-          </a>
-        </div>
+    <!-- Sources left under title -->
+    <aside class="sources-panel" role="list">
+      @for (s of sources; track s.id) {
+        <a
+          class="source-row"
+          role="listitem"
+          [href]="s.link"
+          target="_blank"
+          rel="noopener noreferrer"
+          (mouseenter)="onHover(s.id)"
+          [class.active]="hoveredId === s.id"
+          [attr.aria-label]="currentLang === 'uk' ? s.nameUk : s.nameEn">
+          <div
+            class="source-icon"
+            [style.background]="s.iconBg"
+            [style.color]="s.iconColor">
+            {{ s.iconText }}
+          </div>
+          <span class="source-name">{{ currentLang === 'uk' ? s.nameUk : s.nameEn }}</span>
+        </a>
       }
-
-      <!-- Sources: vertical list on the right (YouTube subscriptions style) -->
-      <aside class="sources-panel" role="list">
-        @for (s of sources; track s.id) {
-          <a
-            class="source-row"
-            role="listitem"
-            [href]="s.link"
-            target="_blank"
-            rel="noopener noreferrer"
-            (mouseenter)="onHover(s.id)"
-            [class.active]="hoveredId === s.id"
-            [attr.aria-label]="currentLang === 'uk' ? s.nameUk : s.nameEn">
-            <div
-              class="source-icon"
-              [style.background]="s.iconBg"
-              [style.color]="s.iconColor">
-              {{ s.iconText }}
-            </div>
-            <span class="source-name">{{ currentLang === 'uk' ? s.nameUk : s.nameEn }}</span>
-          </a>
-        }
-      </aside>
-    </div>
+    </aside>
   </main>
 </div>
