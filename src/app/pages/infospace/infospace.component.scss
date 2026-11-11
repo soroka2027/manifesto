@@ -31,7 +31,7 @@
   position: relative;
   flex: 1;
   min-height: calc(100vh - 5.5rem);
-  display: flex;
+  display: block;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -54,7 +54,7 @@
 /* Hover cards over the photo (left-center) */
 .hover-cards {
   position: absolute;
-  left: 4%;
+  left: 42%;
   bottom: 14%;
   z-index: 2;
   display: flex;
@@ -155,25 +155,28 @@
   }
 }
 
-/* Sources panel — right side, YouTube subscriptions style */
+/* Sources panel — left under title, YouTube subscriptions style */
 .sources-panel {
-  position: relative;
+  position: absolute;
+  top: 0.4rem;
+  left: 0.5rem;
   z-index: 2;
-  margin-left: auto;
-  width: 260px;
-  max-width: 42%;
-  padding: 0.75rem 0.6rem;
+  width: 250px;
+  max-width: 38%;
+  padding: 0.5rem 0.45rem;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.12rem;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.82) 18%,
-    rgba(255, 255, 255, 0.94) 100%
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(255, 255, 255, 0.82) 75%,
+    rgba(255, 255, 255, 0) 100%
   );
   overflow-y: auto;
+  max-height: calc(100% - 1rem);
   scrollbar-width: thin;
+  border-radius: 12px 0 0 12px;
 }
 
 .source-row {
@@ -259,11 +262,22 @@
   }
 
   .sources-panel {
+    position: static;
     width: 100%;
     max-width: none;
-    margin-left: 0;
+    max-height: none;
     background: #fff;
     padding: 0.4rem 0.2rem 0.8rem;
+    border-radius: 0;
+  }
+
+  .stage {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-bg {
+    order: -1;
   }
 }
 
