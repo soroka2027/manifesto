@@ -27,16 +27,7 @@
           src="assets/infospace-hero.jpg"
           alt="SOROKA — infospace"
           class="hero-img" />
-        <div class="laptop-overlay" aria-hidden="true">
-          <span class="mini-play">▶</span>
-        </div>
-        <div class="hero-lines">
-          @for (line of lines; track $index) {
-            <p>{{ line }}</p>
-          }
-        </div>
-
-        <!-- Hover cards (above strip, over hero) -->
+<!-- Hover cards (above strip, over hero) -->
         @if (hovered) {
           <div class="hover-cards">
             <a class="card media-card" [href]="hovered.link" target="_blank" rel="noopener noreferrer">
