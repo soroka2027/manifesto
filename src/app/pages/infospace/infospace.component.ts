@@ -16,7 +16,6 @@ interface SourceItem {
   cardMetaEn: string;
   commentUk: string;
   commentEn: string;
-  thumb?: string;
 }
 
 @Component({
@@ -29,30 +28,6 @@ interface SourceItem {
 export class InfospaceComponent {
   currentLang: 'uk' | 'en' = 'uk';
   hoveredId: string | null = null;
-
-  searchQueryUk = 'повідомити про корупцію';
-  searchQueryEn = 'report corruption';
-  suggestionUk = 'національне антикорупційне бюро україни';
-  suggestionEn = 'national anti-corruption bureau of ukraine';
-  nabuSite = 'https://nabu.gov.ua/';
-
-  manifestoLinesUk = [
-    'Слухай багатьох',
-    'Аналізуй',
-    'Перевіряй факти',
-    'Руйнуй шаблони',
-    'Правда не боїться твоїх запитань',
-    'Істина витримує будь-яку критику'
-  ];
-
-  manifestoLinesEn = [
-    'Listen to many',
-    'Analyze',
-    'Check the facts',
-    'Break the patterns',
-    'Truth is not afraid of your questions',
-    'Truth withstands any criticism'
-  ];
 
   sources: SourceItem[] = [
     {
@@ -70,8 +45,22 @@ export class InfospaceComponent {
       commentUk:
         'Дуже вдячні Вам НАБУ і САП!!! Ви неймовірно хоробрі! І ми з Вами повністю солідарні у боротьбі із корупцією! Не буде чесним і сумлінно працюючим людям жити добре, доки ми не змінимо правоохоронну й інші системи через відповідні реформи. Щоб на ключові посади мали доступ лише доброчесні і професійні кандидати, що обираються на основі прозорого і неупередженого конкурсу.',
       commentEn:
-        'Deeply grateful to NABU and SAP!!! You are incredibly brave! We fully stand with you in the fight against corruption. Honest, hard-working people will not live well until we reform law enforcement and other systems — so that only integrity and professional candidates reach key positions through transparent, impartial competitions.',
-      thumb: 'assets/nabu-thumb.svg'
+        'Deeply grateful to NABU and SAP!!! You are incredibly brave! We fully stand with you in the fight against corruption. Honest, hard-working people will not live well until we reform law enforcement and other systems — so that only integrity and professional candidates reach key positions through transparent, impartial competitions.'
+    },
+    {
+      id: 'up',
+      nameUk: 'Українська правда',
+      nameEn: 'Ukrainska Pravda',
+      iconText: 'УП',
+      iconBg: '#7a1520',
+      iconColor: '#fff',
+      link: 'https://www.pravda.com.ua/',
+      cardTitleUk: 'Українська правда',
+      cardTitleEn: 'Ukrainska Pravda',
+      cardMetaUk: 'Медіа',
+      cardMetaEn: 'Media',
+      commentUk: 'Читаю, порівнюю, перевіряю факти.',
+      commentEn: 'I read, compare, check the facts.'
     },
     {
       id: 'epytannia',
@@ -89,25 +78,70 @@ export class InfospaceComponent {
       commentEn: 'One of the sources where I ask questions and listen to answers.'
     },
     {
-      id: 'up',
-      nameUk: 'Українська правда',
-      nameEn: 'Ukrainska Pravda',
-      iconText: 'УП',
-      iconBg: '#7a1520',
-      iconColor: '#fff',
-      link: 'https://www.pravda.com.ua/',
-      cardTitleUk: 'Українська правда',
-      cardTitleEn: 'Ukrainska Pravda',
+      id: 'mokrec',
+      nameUk: 'MokRec',
+      nameEn: 'MokRec',
+      iconText: 'MR',
+      iconBg: '#1a1a1a',
+      iconColor: '#e63939',
+      link: 'https://www.youtube.com/@MokRec',
+      cardTitleUk: 'MokRec',
+      cardTitleEn: 'MokRec',
+      cardMetaUk: 'YouTube',
+      cardMetaEn: 'YouTube',
+      commentUk: 'Дивлюся розбори і матеріали каналу.',
+      commentEn: 'I watch the channel’s breakdowns and materials.'
+    },
+    {
+      id: 'censor',
+      nameUk: 'Цензор.NET',
+      nameEn: 'Censor.NET',
+      iconText: 'ЦН',
+      iconBg: '#c9a227',
+      iconColor: '#111',
+      link: 'https://censor.net/',
+      cardTitleUk: 'Цензор.NET',
+      cardTitleEn: 'Censor.NET',
       cardMetaUk: 'Медіа',
       cardMetaEn: 'Media',
-      commentUk: 'Читаю, порівнюю, перевіряю.',
-      commentEn: 'I read, compare, verify.'
+      commentUk: 'Слідкую за новинами та матеріалами.',
+      commentEn: 'I follow the news and materials.'
+    },
+    {
+      id: 'radionv',
+      nameUk: 'Radio NV',
+      nameEn: 'Radio NV',
+      iconText: 'NV',
+      iconBg: '#111',
+      iconColor: '#e10600',
+      link: 'https://radio.nv.ua/',
+      cardTitleUk: 'Radio NV',
+      cardTitleEn: 'Radio NV',
+      cardMetaUk: 'Радіо / медіа',
+      cardMetaEn: 'Radio / media',
+      commentUk: 'Слухаю аналітику та інтерв’ю.',
+      commentEn: 'I listen to analysis and interviews.'
+    },
+    {
+      id: 'bihus',
+      nameUk: 'BIHUS Info',
+      nameEn: 'BIHUS Info',
+      iconText: 'Б',
+      iconBg: '#f5c518',
+      iconColor: '#111',
+      link: 'https://bihus.info/',
+      cardTitleUk: 'BIHUS Info',
+      cardTitleEn: 'BIHUS Info',
+      cardMetaUk: 'Розслідування',
+      cardMetaEn: 'Investigations',
+      commentUk: 'Важливі розслідування — обов’язково дивлюсь.',
+      commentEn: 'Important investigations — I always watch.'
     },
     {
       id: 'cpk',
       nameUk: 'Центр протидії корупції',
       nameEn: 'Anti-Corruption Center',
-      iconText: 'цпк_',
+      iconText: 'цпк',
       iconBg: '#111',
       iconColor: '#fff',
       link: 'https://antac.org.ua/',
@@ -122,18 +156,6 @@ export class InfospaceComponent {
 
   get title() {
     return this.currentLang === 'uk' ? 'Інфопростір' : 'Infospace';
-  }
-
-  get searchQuery() {
-    return this.currentLang === 'uk' ? this.searchQueryUk : this.searchQueryEn;
-  }
-
-  get suggestion() {
-    return this.currentLang === 'uk' ? this.suggestionUk : this.suggestionEn;
-  }
-
-  get lines() {
-    return this.currentLang === 'uk' ? this.manifestoLinesUk : this.manifestoLinesEn;
   }
 
   get hovered(): SourceItem | null {
