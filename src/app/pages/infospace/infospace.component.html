@@ -1,0 +1,86 @@
+<div class="page">
+  <app-sidebar [lang]="currentLang" (langChange)="switchLang($event)"></app-sidebar>
+
+  <main class="content">
+    <h1 class="page-title">{{ title }}</h1>
+
+    <!-- Google-like search -->
+    <div class="search-block">
+      <div class="search-bar" aria-label="Search">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <span class="search-text">{{ searchQuery }}</span>
+        <span class="search-tools" aria-hidden="true">
+          <span>🎤</span>
+          <span>🖼️</span>
+        </span>
+      </div>
+      <a class="search-suggestion" [href]="nabuSite" target="_blank" rel="noopener noreferrer">
+        {{ suggestion }}
+      </a>
+    </div>
+
+    <!-- Hero with overlay cards on hover -->
+    <div class="hero-wrap"
+         (mouseleave)="onHover(null)">
+      <div class="hero-image-box">
+        <img
+          src="assets/infospace-hero.jpg"
+          alt="SOROKA — infospace"
+          class="hero-img" />
+        <div class="hero-lines">
+          @for (line of lines; track $index) {
+            <p>{{ line }}</p>
+          }
+        </div>
+
+        <!-- Hover cards (above strip, over hero) -->
+        @if (hovered) {
+          <div class="hover-cards">
+            <a class="card media-card" [href]="hovered.link" target="_blank" rel="noopener noreferrer">
+              <div class="media-thumb nabu-thumb">
+                <span class="play">▶</span>
+              </div>
+              <div class="media-body">
+                <div class="media-title">{{ currentLang === 'uk' ? hovered.cardTitleUk : hovered.cardTitleEn }}</div>
+                <div class="media-meta">
+                  <span class="dot">{{ hovered.nameUk }}</span>
+                  <span>{{ currentLang === 'uk' ? hovered.cardMetaUk : hovered.cardMetaEn }}</span>
+                </div>
+              </div>
+            </a>
+            <a class="card comment-card" [href]="hovered.link" target="_blank" rel="noopener noreferrer">
+              <div class="comment-label">{{ currentLang === 'uk' ? 'Коментар' : 'Comment' }}</div>
+              <p>{{ currentLang === 'uk' ? hovered.commentUk : hovered.commentEn }}</p>
+            </a>
+          </div>
+        }
+      </div>
+
+      <!-- Sources strip -->
+      <div class="sources-strip" role="list">
+        @for (s of sources; track s.id) {
+          <a
+            class="source-item"
+            role="listitem"
+            [href]="s.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            (mouseenter)="onHover(s.id)"
+            [attr.aria-label]="currentLang === 'uk' ? s.nameUk : s.nameEn">
+            <div
+              class="source-icon"
+              [style.background]="s.iconBg"
+              [style.color]="s.iconColor"
+              [class.ringed]="s.id === 'epytannia'">
+              {{ s.iconText }}
+            </div>
+            <span class="source-name">{{ currentLang === 'uk' ? s.nameUk : s.nameEn }}</span>
+          </a>
+        }
+        <div class="source-item all-item">
+          <span class="all-link">{{ currentLang === 'uk' ? 'Усі' : 'All' }}</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
