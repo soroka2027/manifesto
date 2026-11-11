@@ -97,18 +97,49 @@
 
 .hero-lines {
   position: absolute;
-  top: 8%;
-  left: 42%;
-  max-width: 280px;
+  top: 10%;
+  left: 48%;
+  max-width: 300px;
   pointer-events: none;
 
   p {
-    margin: 0 0 0.2rem;
-    font-size: 15px;
+    margin: 0 0 0.25rem;
+    font-size: 15.5px;
     font-weight: 500;
-    line-height: 140%;
+    line-height: 145%;
     color: #101010;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8), 0 0 12px rgba(255,255,255,0.95);
+  }
+}
+
+/* Decorative laptop screen hint (Carol of the Bells mood) */
+.laptop-overlay {
+  position: absolute;
+  left: 6.5%;
+  top: 38%;
+  width: 28%;
+  height: 22%;
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, rgba(30,60,120,0.35), rgba(10,20,40,0.55)),
+    url('assets/carol-ref.jpg') center/cover;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .mini-play {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    color: #111;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2px;
   }
 }
 
