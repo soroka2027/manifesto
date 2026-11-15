@@ -151,6 +151,22 @@ export class VisualizationComponent {
     return this.currentLang === 'uk' ? this.symbolsUk : this.symbolsEn;
   }
 
+  get installAlt() {
+    return this.currentLang === 'uk'
+      ? 'Зображення: інсталяція Не однаково — кімната з шахами, двома дверима, табличками та символами аполітичності й громадянської позиції'
+      : 'Image: installation Not indifferent — room with chess, two doors, signs, symbols of apoliticalness and civic stance';
+  }
+
+  get installAria() {
+    return this.currentLang === 'uk' ? 'Інсталяція Не однаково' : 'Installation Not indifferent';
+  }
+
+  get descAria() {
+    return this.currentLang === 'uk' ? 'Опис інсталяції' : 'Installation description';
+  }
+
+
+
   switchLang(lang: 'uk' | 'en') {
     this.currentLang = lang;
   }

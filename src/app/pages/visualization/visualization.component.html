@@ -9,10 +9,9 @@
 
     <h1 class="page-title">{{ title }}</h1>
 
-    <!-- State 1: installation -->
     <section
       class="install-stage"
-      aria-label="{{ currentLang === 'uk' ? 'Інсталяція Не однаково' : 'Installation Not indifferent' }}">
+      [attr.aria-label]="installAria">
 
       <div class="frame">
         <button
@@ -28,9 +27,7 @@
         <img
           src="assets/visualization-install.jpg"
           class="install-img"
-          alt="{{ currentLang === 'uk'
-            ? 'Зображення: інсталяція «Не однаково» — кімната з шахами, двома дверима, табличками та символами аполітичності й громадянської позиції'
-            : 'Image: installation Not indifferent — room with chess, two doors, signs, symbols of apoliticalness and civic stance' }}"
+          [attr.alt]="installAlt"
         />
       </div>
 
@@ -50,13 +47,12 @@
       </button>
     </section>
 
-    <!-- State 2: description sheet -->
     <section
       class="desc-sheet"
       [class.open]="descriptionOpen"
       role="region"
       [attr.aria-hidden]="!descriptionOpen"
-      [attr.aria-label]="currentLang === 'uk' ? 'Опис інсталяції' : 'Installation description'">
+      [attr.aria-label]="descAria">
 
       <div class="sheet-handle" aria-hidden="true"></div>
 
@@ -65,11 +61,11 @@
         class="sheet-close"
         (click)="closeDescription()"
         [attr.aria-label]="closeLabel">
-        {{ closeLabel }} ↓
+        {{ closeLabel }}
       </button>
 
       <div class="sheet-body">
-        <p class="intro" [innerText]="intro"></p>
+        <p class="intro">{{ intro }}</p>
 
         <ul class="symbols">
           @for (s of symbols; track s.title) {
