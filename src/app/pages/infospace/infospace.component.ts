@@ -42,7 +42,7 @@ export class InfospaceComponent {
       nameUk: 'Картонки',
       nameEn: 'Kartonky',
       link: 'https://kartonky.propellercrew.com/',
-      iconImg: 'assets/source-kartonky-icon.jpg',
+      iconImg: 'assets/source-kartonky-logo.svg',
       iconText: '',
       iconBg: '#111',
       iconColor: '#fff',

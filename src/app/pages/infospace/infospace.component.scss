@@ -148,6 +148,11 @@
   display: block;
 }
 
+.source-icon.has-img .icon-img {
+  object-fit: cover;
+  background: #14110d;
+}
+
 .source-name {
   font-size: 11.5px;
   text-align: center;

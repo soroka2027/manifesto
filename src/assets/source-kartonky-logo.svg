@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#14110d"/>
+  <!-- cardboard placard, slightly tilted -->
+  <g transform="rotate(-6 32 32)">
+    <rect x="12" y="16" width="40" height="32" rx="3" fill="#cbb389"/>
+    <!-- marker-yellow tape -->
+    <rect x="26" y="12" width="14" height="7" rx="1" fill="#f4c531" opacity="0.9"/>
+    <!-- bold marker "К" drawn as strokes (font-independent, renders anywhere) -->
+    <g stroke="#14110d" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <line x1="27" y1="23" x2="27" y2="41"/>
+      <line x1="28" y1="32.5" x2="39" y2="23"/>
+      <line x1="28" y1="32.5" x2="39" y2="41"/>
+    </g>
+  </g>
+</svg>
