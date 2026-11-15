@@ -1,0 +1,88 @@
+<div class="page">
+  <app-sidebar [lang]="currentLang" (langChange)="switchLang($event)"></app-sidebar>
+
+  <main
+    class="content"
+    [class.sheet-open]="descriptionOpen"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)">
+
+    <h1 class="page-title">{{ title }}</h1>
+
+    <!-- State 1: installation -->
+    <section
+      class="install-stage"
+      aria-label="{{ currentLang === 'uk' ? 'Інсталяція Не однаково' : 'Installation Not indifferent' }}">
+
+      <div class="frame">
+        <button
+          type="button"
+          class="audio-btn"
+          (click)="toggleAudio()"
+          [attr.aria-label]="audioLabel"
+          [attr.aria-pressed]="audioPlaying">
+          <span class="audio-icon" aria-hidden="true">{{ audioPlaying ? '⏸' : '🎧' }}</span>
+          <span class="audio-text">{{ currentLang === 'uk' ? 'Аудіогід' : 'Audio guide' }}</span>
+        </button>
+
+        <img
+          src="assets/visualization-install.jpg"
+          class="install-img"
+          alt="{{ currentLang === 'uk'
+            ? 'Зображення: інсталяція «Не однаково» — кімната з шахами, двома дверима, табличками та символами аполітичності й громадянської позиції'
+            : 'Image: installation Not indifferent — room with chess, two doors, signs, symbols of apoliticalness and civic stance' }}"
+        />
+      </div>
+
+      <div class="install-meta">
+        <h2 class="install-title">«{{ installTitle }}»</h2>
+        <p class="install-sub">{{ installSubtitle }}</p>
+      </div>
+
+      <button
+        type="button"
+        class="swipe-cue"
+        (click)="openDescription()"
+        [attr.aria-label]="swipeLabel"
+        [attr.aria-expanded]="descriptionOpen">
+        <span class="swipe-label">{{ swipeLabel }}</span>
+        <span class="swipe-arrow" aria-hidden="true">⌃</span>
+      </button>
+    </section>
+
+    <!-- State 2: description sheet -->
+    <section
+      class="desc-sheet"
+      [class.open]="descriptionOpen"
+      role="region"
+      [attr.aria-hidden]="!descriptionOpen"
+      [attr.aria-label]="currentLang === 'uk' ? 'Опис інсталяції' : 'Installation description'">
+
+      <div class="sheet-handle" aria-hidden="true"></div>
+
+      <button
+        type="button"
+        class="sheet-close"
+        (click)="closeDescription()"
+        [attr.aria-label]="closeLabel">
+        {{ closeLabel }} ↓
+      </button>
+
+      <div class="sheet-body">
+        <p class="intro" [innerText]="intro"></p>
+
+        <ul class="symbols">
+          @for (s of symbols; track s.title) {
+            <li class="symbol-item">
+              <span class="symbol-icon" aria-hidden="true">{{ s.icon }}</span>
+              <div>
+                <h3 class="symbol-title">{{ s.title }}</h3>
+                <p class="symbol-text">{{ s.text }}</p>
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>

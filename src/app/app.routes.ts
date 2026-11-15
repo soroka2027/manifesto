@@ -4,13 +4,14 @@ import { BehindScenesComponent } from './pages/behind-scenes/behind-scenes.compo
 import { AboutComponent } from './pages/about/about.component';
 import { ManifestComponent } from './pages/manifest/manifest.component';
 import { InfospaceComponent } from './pages/infospace/infospace.component';
+import { VisualizationComponent } from './pages/visualization/visualization.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'manifest', component: ManifestComponent },
   { path: 'behind-scenes', component: BehindScenesComponent },
   { path: 'infospace', component: InfospaceComponent },
-  { path: 'visualization', component: HomeComponent },
+  { path: 'visualization', component: VisualizationComponent },
   { path: 'about', component: AboutComponent },
   { path: '**', redirectTo: '' }
 ];
