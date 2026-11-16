@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <h1 class="typing">
+    <h1 class="typing" [class.left]="align === 'left'">
       <span>{{ displayedText }}</span>
       <span class="cursor" [class.blink]="!isTyping">|</span>
     </h1>
@@ -21,6 +21,11 @@ import { CommonModule } from '@angular/common';
       min-height: 2.2rem;
       letter-spacing: 0.05em;
       text-align: center;
+    }
+
+    .typing.left {
+      text-align: left;
+      margin: 0.35rem 0 1rem;
     }
 
     .cursor {
@@ -44,6 +49,9 @@ import { CommonModule } from '@angular/common';
         font-size: 24px;
         margin: 1rem 0 1.4rem;
       }
+      .typing.left {
+        margin: 0.25rem 0 0.9rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -55,6 +63,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HelloWorldComponent implements OnInit, OnChanges, OnDestroy {
   @Input() lang: 'uk' | 'en' = 'uk';
+  @Input() align: 'center' | 'left' = 'center';
 
   displayedText = '';
   isTyping = true;
