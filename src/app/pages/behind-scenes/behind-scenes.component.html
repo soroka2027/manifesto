@@ -3,7 +3,18 @@
 
   <main class="content">
     <h1 class="page-title">{{ currentLang === 'uk' ? 'За лаштунками' : 'Behind the Scenes' }}</h1>
-    <p class="intro-text">{{ intro }}</p>
+
+    <app-hello-world [lang]="currentLang" align="left"></app-hello-world>
+
+    <div class="ai-intro">
+      @for (block of introBlocks; track $index) {
+        <p [class.lead]="block.bold">{{ block.text }}</p>
+      }
+    </div>
+
+    <div class="dialogue-label">
+      {{ currentLang === 'uk' ? 'Діалоги' : 'Dialogues' }}
+    </div>
 
     <div class="chat-page">
       <div class="message user">
@@ -27,12 +38,13 @@
     </div>
 
     <div class="page-switcher">
-      <button class="nav-btn" (click)="prev()" [disabled]="currentPage === 0">«</button>
+      <button type="button" class="nav-btn" (click)="prev()" [disabled]="currentPage === 0">«</button>
       @for (item of visiblePages; track $index) {
         @if (item === 'ellipsis') {
           <span class="ellipsis">…</span>
         } @else {
           <button
+            type="button"
             class="page-btn"
             [class.active]="currentPage === item"
             (click)="goToPage(item)">
@@ -40,7 +52,7 @@
           </button>
         }
       }
-      <button class="nav-btn" (click)="next()" [disabled]="currentPage === totalPages - 1">»</button>
+      <button type="button" class="nav-btn" (click)="next()" [disabled]="currentPage === totalPages - 1">»</button>
     </div>
   </main>
 </div>

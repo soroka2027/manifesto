@@ -62,7 +62,7 @@ export class HelloWorldComponent implements OnInit, OnChanges, OnDestroy {
   private intervalId: any;
 
   private texts = {
-    uk: 'Привіт Світ!',
+    uk: 'Привіт, Світ!',
     en: 'Hello World!'
   };
 

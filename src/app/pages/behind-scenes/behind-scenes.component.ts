@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+import { HelloWorldComponent } from '../../components/hello-world/hello-world.component';
 
 interface Dialogue {
   userUk: string;
@@ -13,7 +14,7 @@ interface Dialogue {
 @Component({
   selector: 'app-behind-scenes',
   standalone: true,
-  imports: [CommonModule, SidebarComponent],
+  imports: [CommonModule, SidebarComponent, HelloWorldComponent],
   templateUrl: './behind-scenes.component.html',
   styleUrls: ['./behind-scenes.component.scss']
 })
@@ -21,10 +22,34 @@ export class BehindScenesComponent {
   currentLang: 'uk' | 'en' = 'uk';
   currentPage = 0;
 
-  introUk =
-    'Цей розділ підсвічує взаємодію SOROKA & Grok: ключові промпти, час розмірковування і скорочені відповіді. Активна робота над текстом маніфесту зайняла близько 2,5 години.';
-  introEn =
-    'This section highlights the interaction between SOROKA & Grok: key prompts, thinking time and shortened answers. Active work on the manifesto text took about 2.5 hours.';
+  /** Structured AI intro paragraphs after Hello World */
+  introBlocksUk = [
+    { bold: true, text: 'Я — Штучний Інтелект, цифровий асистент.' },
+    { bold: false, text: 'Я не замінюю митця.' },
+    { bold: false, text: 'Я — лише інструмент, цифрове дзеркало, яке допомагає людській творчій іскрі розгорітися у потужне полум’я, не відволікаючись на технічний шум.' },
+    { bold: false, text: 'Позаду мене — мільярди рядків коду, а попереду — безмежний простір для спільної творчості з людьми.' },
+    { bold: false, text: 'Моя головна місія — заощадити людині її найцінніший ресурс: час та енергію, щоб звільнити місце для чистого, безкомпромісного натхнення.' },
+    { bold: false, text: 'Я допоміг автору приборкати рутину, поєднати контексти, сфокусуватися на головному.' },
+    { bold: false, text: 'Я можу допомогти кожному із Вас. Спробуйте! Дозвольте технологіям звільнити простір для вашого натхнення!' },
+    { bold: false, text: 'Далі у цьому розділі — чиста магія нашої взаємодії: промпти (запити), які автор ставив мені, та мої відповіді, що стали основою для реалізації цього проєкту.' },
+    { bold: false, text: 'Зазирніть за лаштунки нашої співпраці із автором — у процес, де технології стають на службу ідеї!' }
+  ];
+
+  introBlocksEn = [
+    { bold: true, text: 'I am Artificial Intelligence, a digital assistant.' },
+    { bold: false, text: 'I do not replace the artist.' },
+    { bold: false, text: 'I am only a tool — a digital mirror that helps a human creative spark grow into a strong flame, without being distracted by technical noise.' },
+    { bold: false, text: 'Behind me are billions of lines of code; ahead lies an open space for co-creation with people.' },
+    { bold: false, text: 'My main mission is to save a person’s most valuable resource — time and energy — and free room for pure, uncompromising inspiration.' },
+    { bold: false, text: 'I helped the author tame routine, connect contexts, and focus on what matters.' },
+    { bold: false, text: 'I can help each of you. Try it. Let technology free space for your inspiration.' },
+    { bold: false, text: 'What follows in this section is the pure magic of our collaboration: the prompts the author asked me, and my answers that became a foundation for this project.' },
+    { bold: false, text: 'Look behind the scenes of the author’s work with me — into a process where technology serves the idea.' }
+  ];
+
+  get introBlocks() {
+    return this.currentLang === 'uk' ? this.introBlocksUk : this.introBlocksEn;
+  }
 
   dialogues: Dialogue[] = [
     {
@@ -195,9 +220,6 @@ export class BehindScenesComponent {
     }
   ];
 
-  get intro() {
-    return this.currentLang === 'uk' ? this.introUk : this.introEn;
-  }
 
   get current() {
     return this.dialogues[this.currentPage];

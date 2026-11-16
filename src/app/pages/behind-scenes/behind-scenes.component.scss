@@ -23,13 +23,33 @@
   margin: 0 0 0.6rem;
 }
 
-.intro-text {
-  font-size: 14px;
-  line-height: 145%;
-  color: #555;
-  margin-bottom: 1.2rem;
-  padding-bottom: 0.8rem;
+.ai-intro {
+  margin: 0 0 1.3rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #eee;
+  max-width: 640px;
+
+  p {
+    margin: 0 0 0.65rem;
+    font-size: 15px;
+    line-height: 150%;
+    color: #232323;
+  }
+
+  p.lead {
+    font-weight: 700;
+    font-size: 16px;
+    color: #101010;
+  }
+}
+
+.dialogue-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
 }
 
 .chat-page {
