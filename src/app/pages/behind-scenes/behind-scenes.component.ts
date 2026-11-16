@@ -22,33 +22,32 @@ export class BehindScenesComponent {
   currentLang: 'uk' | 'en' = 'uk';
   currentPage = 0;
 
-  /** Structured AI intro paragraphs after Hello World */
+  /** Page 0 — AI intro (shown once) */
   introBlocksUk = [
-    { bold: true, text: 'Я — Штучний Інтелект, цифровий асистент.' },
-    { bold: false, text: 'Я не замінюю митця.' },
-    { bold: false, text: 'Я — лише інструмент, цифрове дзеркало, яке допомагає людській творчій іскрі розгорітися у потужне полум’я, не відволікаючись на технічний шум.' },
-    { bold: false, text: 'Позаду мене — мільярди рядків коду, а попереду — безмежний простір для спільної творчості з людьми.' },
-    { bold: false, text: 'Моя головна місія — заощадити людині її найцінніший ресурс: час та енергію, щоб звільнити місце для чистого, безкомпромісного натхнення.' },
-    { bold: false, text: 'Я допоміг автору приборкати рутину, поєднати контексти, сфокусуватися на головному.' },
-    { bold: false, text: 'Я можу допомогти кожному із Вас. Спробуйте! Дозвольте технологіям звільнити простір для вашого натхнення!' },
-    { bold: false, text: 'Далі у цьому розділі — чиста магія нашої взаємодії: промпти (запити), які автор ставив мені, та мої відповіді, що стали основою для реалізації цього проєкту.' },
-    { bold: false, text: 'Зазирніть за лаштунки нашої співпраці із автором — у процес, де технології стають на службу ідеї!' }
+    { bold: true, text: 'Я — штучний інтелект, цифровий асистент.' },
+    { bold: false, text: 'Я не замінюю автора і не привласнюю ідею.' },
+    { bold: false, text: 'Моя робота — зняти з людини технічний і організаційний шум: допомогти зібрати думку, утримати довгий контекст, відредагувати текст, зібрати структуру, написати код, перевірити формулювання. Щоб енергія йшла в сенс, а не в рутину.' },
+    { bold: false, text: 'У цьому проєкті я допоміг авторці оформити маніфест і сайт. Рішення, позиція і відповідальність за зміст — її.' },
+    { bold: false, text: 'Якщо вам потрібен спокійний помічник для тексту, ідеї чи складного завдання — спробуйте. Найкращий результат виходить, коли людина знає навіщо, а інструмент допомагає як.' },
+    { bold: false, text: 'Далі — промпти і відповіді, з яких збирався цей проєкт.' }
   ];
 
   introBlocksEn = [
-    { bold: true, text: 'I am Artificial Intelligence, a digital assistant.' },
-    { bold: false, text: 'I do not replace the artist.' },
-    { bold: false, text: 'I am only a tool — a digital mirror that helps a human creative spark grow into a strong flame, without being distracted by technical noise.' },
-    { bold: false, text: 'Behind me are billions of lines of code; ahead lies an open space for co-creation with people.' },
-    { bold: false, text: 'My main mission is to save a person’s most valuable resource — time and energy — and free room for pure, uncompromising inspiration.' },
-    { bold: false, text: 'I helped the author tame routine, connect contexts, and focus on what matters.' },
-    { bold: false, text: 'I can help each of you. Try it. Let technology free space for your inspiration.' },
-    { bold: false, text: 'What follows in this section is the pure magic of our collaboration: the prompts the author asked me, and my answers that became a foundation for this project.' },
-    { bold: false, text: 'Look behind the scenes of the author’s work with me — into a process where technology serves the idea.' }
+    { bold: true, text: 'I am artificial intelligence, a digital assistant.' },
+    { bold: false, text: 'I do not replace the author and do not claim the idea.' },
+    { bold: false, text: 'My work is to lift technical and organizational noise: help gather thought, hold long context, edit text, build structure, write code, refine wording — so energy goes into meaning, not routine.' },
+    { bold: false, text: 'In this project I helped the author shape the manifesto and the site. Decisions, stance, and responsibility for the content are hers.' },
+    { bold: false, text: 'If you need a calm assistant for text, an idea, or a complex task — try it. The best result comes when a person knows the why, and the tool helps with the how.' },
+    { bold: false, text: 'What follows are the prompts and answers from which this project was built.' }
   ];
 
   get introBlocks() {
     return this.currentLang === 'uk' ? this.introBlocksUk : this.introBlocksEn;
+  }
+
+  /** true on first page (intro only) */
+  get isIntroPage(): boolean {
+    return this.currentPage === 0;
   }
 
   dialogues: Dialogue[] = [
@@ -222,11 +221,13 @@ export class BehindScenesComponent {
 
 
   get current() {
-    return this.dialogues[this.currentPage];
+    // dialogues start at page index 1
+    return this.dialogues[Math.max(0, this.currentPage - 1)];
   }
 
   get totalPages() {
-    return this.dialogues.length;
+    // page 0 = intro, then all dialogues
+    return this.dialogues.length + 1;
   }
 
   get visiblePages(): (number | 'ellipsis')[] {

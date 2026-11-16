@@ -4,38 +4,36 @@
   <main class="content">
     <h1 class="page-title">{{ currentLang === 'uk' ? 'За лаштунками' : 'Behind the Scenes' }}</h1>
 
-    <app-hello-world [lang]="currentLang" align="left"></app-hello-world>
+    @if (isIntroPage) {
+      <app-hello-world [lang]="currentLang" align="left"></app-hello-world>
 
-    <div class="ai-intro">
-      @for (block of introBlocks; track $index) {
-        <p [class.lead]="block.bold">{{ block.text }}</p>
-      }
-    </div>
+      <div class="ai-intro">
+        @for (block of introBlocks; track $index) {
+          <p [class.lead]="block.bold">{{ block.text }}</p>
+        }
+      </div>
+    } @else {
+      <div class="chat-page">
+        <div class="message user">
+          <div class="bubble">
+            {{ currentLang === 'uk' ? current.userUk : current.userEn }}
+          </div>
+        </div>
 
-    <div class="dialogue-label">
-      {{ currentLang === 'uk' ? 'Діалоги' : 'Dialogues' }}
-    </div>
-
-    <div class="chat-page">
-      <div class="message user">
-        <div class="bubble">
-          {{ currentLang === 'uk' ? current.userUk : current.userEn }}
+        <div class="message grok">
+          <div class="thinking">
+            <span class="bulb">💡</span>
+            <span>
+              {{ currentLang === 'uk' ? 'Розмірковування протягом' : 'Thinking for' }}
+              {{ current.thinkingTime }}
+            </span>
+          </div>
+          <div class="bubble">
+            {{ currentLang === 'uk' ? current.grokUk : current.grokEn }}
+          </div>
         </div>
       </div>
-
-      <div class="message grok">
-        <div class="thinking">
-          <span class="bulb">💡</span>
-          <span>
-            {{ currentLang === 'uk' ? 'Розмірковування протягом' : 'Thinking for' }}
-            {{ current.thinkingTime }}
-          </span>
-        </div>
-        <div class="bubble">
-          {{ currentLang === 'uk' ? current.grokUk : current.grokEn }}
-        </div>
-      </div>
-    </div>
+    }
 
     <div class="page-switcher">
       <button type="button" class="nav-btn" (click)="prev()" [disabled]="currentPage === 0">«</button>
