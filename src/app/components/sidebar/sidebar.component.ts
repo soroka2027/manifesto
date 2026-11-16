@@ -1,12 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { HelloWorldComponent } from '../hello-world/hello-world.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, HelloWorldComponent],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   template: `
     <aside class="sidebar">
       <!-- Mobile top nav -->
@@ -24,21 +23,29 @@ import { HelloWorldComponent } from '../hello-world/hello-world.component';
 
       <!-- Language -->
       <div class="lang-switch">
-        <button [class.active]="lang === 'uk'" (click)="langChange.emit('uk')">ua</button>
+        <button type="button" [class.active]="lang === 'uk'" (click)="langChange.emit('uk')">ua</button>
         <span class="sep">|</span>
-        <button [class.active]="lang === 'en'" (click)="langChange.emit('en')">eng</button>
+        <button type="button" [class.active]="lang === 'en'" (click)="langChange.emit('en')">eng</button>
       </div>
 
-      <!-- Logo + greeting -->
+      <!-- Logo centered + seasonal decor -->
       <div class="brand-block">
-        <a href="https://x.ai" target="_blank" rel="noopener" class="logo-block">
-          <div class="logo-circle">
+        <div class="logo-wrap">
+          <div class="logo-circle" aria-hidden="false">
             <img src="assets/logo.png" alt="SOROKA" class="logo-img" />
           </div>
-          <span class="grok-link">&amp; Grok</span>
-        </a>
-        <app-hello-world [lang]="lang"></app-hello-world>
-        <div class="halloween-badge">🎃 Happy Halloween</div>
+          <span class="season-bell" title="Carol of the Bells / Щедрик" aria-hidden="true">🔔</span>
+          <span class="season-candle" title="{{ lang === 'uk' ? 'Світла пам\\'ять' : 'In memory' }}" aria-hidden="true">🕯️</span>
+        </div>
+
+        <div class="season-block">
+          <div class="spruce" aria-hidden="true">
+            <span class="spruce-branch">🌲</span>
+            <span class="spruce-star">✨</span>
+            <span class="spruce-snow">❄</span>
+          </div>
+          <p class="season-greeting">{{ seasonGreeting }}</p>
+        </div>
       </div>
 
       <!-- Desktop vertical menu -->
@@ -69,4 +76,26 @@ export class SidebarComponent {
     { path: '/infospace', labelUk: 'Інфопростір', labelEn: 'Infospace', exact: false },
     { path: '/visualization', labelUk: 'Візуалізація', labelEn: 'Visualization', exact: false }
   ];
+
+  /** Seasonal greeting by calendar date (local). */
+  get seasonGreeting(): string {
+    const now = new Date();
+    const month = now.getMonth() + 1; // 1–12
+    const day = now.getDate();
+
+    // St Nicholas: through 6 December
+    if (month < 12 || (month === 12 && day <= 6)) {
+      return this.lang === 'uk' ? 'З Днем Святого Миколая!' : 'Happy Saint Nicholas Day!';
+    }
+    // Christmas season: 7–30 December
+    if (month === 12 && day >= 7 && day <= 30) {
+      return this.lang === 'uk' ? 'З Різдвом Христовим!' : 'Merry Christmas!';
+    }
+    // New Year: 31 Dec and January
+    if ((month === 12 && day >= 31) || month === 1) {
+      return this.lang === 'uk' ? 'З Новим 2027 роком!' : 'Happy New Year 2027!';
+    }
+    // Rest of year — quiet hope line
+    return this.lang === 'uk' ? 'Світло з нами.' : 'Light is with us.';
+  }
 }
