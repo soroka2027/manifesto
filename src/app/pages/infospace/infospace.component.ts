@@ -168,13 +168,16 @@ export class InfospaceComponent implements OnDestroy {
   /** Desktop: hover opens tip */
   onSourceEnter(id: string) {
     if (this.isCoarsePointer()) return;
+    this.clearHideTimer();
     this.setActive(id);
   }
 
   /** Desktop: leaving the whole stage can clear; keep tip while moving between sources */
   onStageLeave() {
     if (this.isCoarsePointer()) return;
-    this.clearActive();
+    // Short delay so cursor can move from icon to tip on the photo
+    this.clearHideTimer();
+    this.hideTimer = setTimeout(() => this.clearActive(), 280);
   }
 
   /**
