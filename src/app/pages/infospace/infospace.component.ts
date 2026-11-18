@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
@@ -27,6 +27,7 @@ interface SourceItem {
   styleUrls: ['./infospace.component.scss']
 })
 export class InfospaceComponent implements OnDestroy {
+  @ViewChild('heroBlock') heroBlock?: ElementRef<HTMLElement>;
   currentLang: 'uk' | 'en' = 'uk';
   /** Active source for tip (hover on desktop, tap on mobile) */
   activeId: string | null = null;
@@ -184,6 +185,12 @@ export class InfospaceComponent implements OnDestroy {
     event.preventDefault();
     event.stopPropagation();
     this.setActive(id);
+    // Mobile: bring photo + fixed tip into view
+    if (this.isCoarsePointer()) {
+      setTimeout(() => {
+        this.heroBlock?.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
+    }
   }
 
   private setActive(id: string) {

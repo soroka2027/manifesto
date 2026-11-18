@@ -6,7 +6,7 @@
     <p class="motto">{{ motto }}</p>
 
     <div class="stage" (mouseleave)="onStageLeave()">
-      <!-- Sources: left on desktop, below on mobile -->
+      <!-- Sources: left on desktop; under motto (before photo) on mobile -->
       <div class="sources-strip" role="list">
         @for (s of sources; track s.id) {
           <button
@@ -34,20 +34,22 @@
         }
       </div>
 
-      <!-- Hero photo -->
-      <div class="hero-block">
+      <!-- Hero: tip always top-left on photo -->
+      <div class="hero-block" #heroBlock>
         <img
           src="assets/infospace-hero.jpg"
           class="hero-img"
           [attr.alt]="currentLang === 'uk' ? 'Авторка в робочому просторі' : 'The author in her workspace'"
         />
 
-        <!-- Desktop tip over / near photo -->
         @if (active) {
-          <div class="preview-pop desktop-pop" role="dialog" [attr.aria-label]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn">
+          <div
+            class="preview-pop"
+            role="dialog"
+            [attr.aria-label]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn">
             <div class="preview-title">{{ currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn }}</div>
             @if (active.preview1 || active.preview2) {
-              <div class="preview-images">
+              <div class="preview-images" [class.single]="!(active.preview1 && active.preview2)">
                 @if (active.preview1) {
                   <div class="preview-shot">
                     <img [src]="active.preview1" [attr.alt]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn" />
@@ -68,30 +70,5 @@
         }
       </div>
     </div>
-
-    <!-- Mobile tip under strip -->
-    @if (active) {
-      <div class="preview-pop mobile-pop" role="dialog" [attr.aria-label]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn">
-        <div class="preview-title">{{ currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn }}</div>
-        @if (active.preview1 || active.preview2) {
-          <div class="preview-images">
-            @if (active.preview1) {
-              <div class="preview-shot">
-                <img [src]="active.preview1" [attr.alt]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn" />
-              </div>
-            }
-            @if (active.preview2) {
-              <div class="preview-shot">
-                <img [src]="active.preview2" alt="" />
-              </div>
-            }
-          </div>
-        }
-        <p class="preview-comment">{{ currentLang === 'uk' ? active.commentUk : active.commentEn }}</p>
-        <a class="go-btn" [href]="active.link" target="_blank" rel="noopener noreferrer">
-          {{ goLabel }}
-        </a>
-      </div>
-    }
   </main>
 </div>
