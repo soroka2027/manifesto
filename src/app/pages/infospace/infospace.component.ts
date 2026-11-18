@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
@@ -7,7 +7,6 @@ interface SourceItem {
   nameUk: string;
   nameEn: string;
   link: string;
-  /** path under assets, or null for CSS letter icon */
   iconImg: string | null;
   iconText: string;
   iconBg: string;
@@ -27,9 +26,13 @@ interface SourceItem {
   templateUrl: './infospace.component.html',
   styleUrls: ['./infospace.component.scss']
 })
-export class InfospaceComponent {
+export class InfospaceComponent implements OnDestroy {
   currentLang: 'uk' | 'en' = 'uk';
-  hoveredId: string | null = null;
+  /** Active source for tip (hover on desktop, tap on mobile) */
+  activeId: string | null = null;
+  private hideTimer: ReturnType<typeof setTimeout> | null = null;
+  /** 60s inactivity then tip closes (especially mobile) */
+  private readonly hideDelayMs = 60_000;
 
   mottoUk =
     'Слухай багатьох, аналізуй, перевіряй факти, руйнуй шаблони: правда не боїться твоїх запитань, істина витримує будь-яку критику.';
@@ -149,15 +152,67 @@ export class InfospaceComponent {
     return this.currentLang === 'uk' ? this.mottoUk : this.mottoEn;
   }
 
-  get hovered(): SourceItem | null {
-    return this.sources.find((s) => s.id === this.hoveredId) || null;
+  get active(): SourceItem | null {
+    return this.sources.find((s) => s.id === this.activeId) || null;
+  }
+
+  get goLabel() {
+    return this.currentLang === 'uk' ? 'Перейти' : 'Open';
   }
 
   switchLang(lang: 'uk' | 'en') {
     this.currentLang = lang;
   }
 
-  onHover(id: string | null) {
-    this.hoveredId = id;
+  /** Desktop: hover opens tip */
+  onSourceEnter(id: string) {
+    if (this.isCoarsePointer()) return;
+    this.setActive(id);
+  }
+
+  /** Desktop: leaving the whole stage can clear; keep tip while moving between sources */
+  onStageLeave() {
+    if (this.isCoarsePointer()) return;
+    this.clearActive();
+  }
+
+  /**
+   * Mobile/tablet: first tap selects & shows tip, does NOT navigate.
+   * Desktop click also selects (hover already did).
+   */
+  onSourceActivate(id: string, event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.setActive(id);
+  }
+
+  private setActive(id: string) {
+    this.activeId = id;
+    this.resetHideTimer();
+  }
+
+  clearActive() {
+    this.activeId = null;
+    this.clearHideTimer();
+  }
+
+  private resetHideTimer() {
+    this.clearHideTimer();
+    this.hideTimer = setTimeout(() => this.clearActive(), this.hideDelayMs);
+  }
+
+  private clearHideTimer() {
+    if (this.hideTimer) {
+      clearTimeout(this.hideTimer);
+      this.hideTimer = null;
+    }
+  }
+
+  private isCoarsePointer(): boolean {
+    return typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+  }
+
+  ngOnDestroy() {
+    this.clearHideTimer();
   }
 }

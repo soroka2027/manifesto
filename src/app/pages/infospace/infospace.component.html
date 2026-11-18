@@ -3,62 +3,95 @@
 
   <main class="content">
     <h1 class="page-title">{{ title }}</h1>
-
     <p class="motto">{{ motto }}</p>
 
-    <div class="hero-block" (mouseleave)="onHover(null)">
-      <img
-        src="assets/infospace-hero.jpg"
-        class="hero-img"
-        [attr.alt]="currentLang === 'uk' ? 'Авторка в робочому просторі' : 'The author in her workspace'"
-      />
+    <div class="stage" (mouseleave)="onStageLeave()">
+      <!-- Sources: left on desktop, below on mobile -->
+      <div class="sources-strip" role="list">
+        @for (s of sources; track s.id) {
+          <button
+            type="button"
+            class="source-item"
+            role="listitem"
+            [class.active]="activeId === s.id"
+            (mouseenter)="onSourceEnter(s.id)"
+            (click)="onSourceActivate(s.id, $event)"
+            [attr.aria-label]="currentLang === 'uk' ? s.nameUk : s.nameEn"
+            [attr.aria-expanded]="activeId === s.id">
+            <div
+              class="source-icon"
+              [class.has-img]="!!s.iconImg"
+              [style.background]="s.iconImg ? 'transparent' : s.iconBg"
+              [style.color]="s.iconColor">
+              @if (s.iconImg) {
+                <img [src]="s.iconImg" [attr.alt]="s.nameUk" class="icon-img" />
+              } @else {
+                <span>{{ s.iconText }}</span>
+              }
+            </div>
+            <span class="source-name">{{ currentLang === 'uk' ? s.nameUk : s.nameEn }}</span>
+          </button>
+        }
+      </div>
 
-      <!-- Hover previews (two images + short comment) -->
-      @if (hovered && (hovered.preview1 || hovered.preview2)) {
-        <div class="preview-pop" role="dialog" [attr.aria-label]="currentLang === 'uk' ? hovered.cardTitleUk : hovered.cardTitleEn">
+      <!-- Hero photo -->
+      <div class="hero-block">
+        <img
+          src="assets/infospace-hero.jpg"
+          class="hero-img"
+          [attr.alt]="currentLang === 'uk' ? 'Авторка в робочому просторі' : 'The author in her workspace'"
+        />
+
+        <!-- Desktop tip over / near photo -->
+        @if (active) {
+          <div class="preview-pop desktop-pop" role="dialog" [attr.aria-label]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn">
+            <div class="preview-title">{{ currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn }}</div>
+            @if (active.preview1 || active.preview2) {
+              <div class="preview-images">
+                @if (active.preview1) {
+                  <div class="preview-shot">
+                    <img [src]="active.preview1" [attr.alt]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn" />
+                  </div>
+                }
+                @if (active.preview2) {
+                  <div class="preview-shot">
+                    <img [src]="active.preview2" alt="" />
+                  </div>
+                }
+              </div>
+            }
+            <p class="preview-comment">{{ currentLang === 'uk' ? active.commentUk : active.commentEn }}</p>
+            <a class="go-btn" [href]="active.link" target="_blank" rel="noopener noreferrer">
+              {{ goLabel }}
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Mobile tip under strip -->
+    @if (active) {
+      <div class="preview-pop mobile-pop" role="dialog" [attr.aria-label]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn">
+        <div class="preview-title">{{ currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn }}</div>
+        @if (active.preview1 || active.preview2) {
           <div class="preview-images">
-            @if (hovered.preview1) {
-              <a [href]="hovered.link" target="_blank" rel="noopener noreferrer" class="preview-shot">
-                <img [src]="hovered.preview1" [attr.alt]="currentLang === 'uk' ? hovered.cardTitleUk : hovered.cardTitleEn" />
-              </a>
+            @if (active.preview1) {
+              <div class="preview-shot">
+                <img [src]="active.preview1" [attr.alt]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn" />
+              </div>
             }
-            @if (hovered.preview2) {
-              <a [href]="hovered.link" target="_blank" rel="noopener noreferrer" class="preview-shot">
-                <img [src]="hovered.preview2" alt="" />
-              </a>
-            }
-          </div>
-          <p class="preview-comment">{{ currentLang === 'uk' ? hovered.commentUk : hovered.commentEn }}</p>
-        </div>
-      }
-    </div>
-
-    <!-- Sources strip -->
-    <div class="sources-strip" role="list" (mouseleave)="onHover(null)">
-      @for (s of sources; track s.id) {
-        <a
-          class="source-item"
-          role="listitem"
-          [href]="s.link"
-          target="_blank"
-          rel="noopener noreferrer"
-          (mouseenter)="onHover(s.id)"
-          [class.active]="hoveredId === s.id"
-          [attr.aria-label]="currentLang === 'uk' ? s.nameUk : s.nameEn">
-          <div
-            class="source-icon"
-            [class.has-img]="!!s.iconImg"
-            [style.background]="s.iconImg ? 'transparent' : s.iconBg"
-            [style.color]="s.iconColor">
-            @if (s.iconImg) {
-              <img [src]="s.iconImg" [attr.alt]="s.nameUk" class="icon-img" />
-            } @else {
-              <span>{{ s.iconText }}</span>
+            @if (active.preview2) {
+              <div class="preview-shot">
+                <img [src]="active.preview2" alt="" />
+              </div>
             }
           </div>
-          <span class="source-name">{{ currentLang === 'uk' ? s.nameUk : s.nameEn }}</span>
+        }
+        <p class="preview-comment">{{ currentLang === 'uk' ? active.commentUk : active.commentEn }}</p>
+        <a class="go-btn" [href]="active.link" target="_blank" rel="noopener noreferrer">
+          {{ goLabel }}
         </a>
-      }
-    </div>
+      </div>
+    }
   </main>
 </div>
