@@ -35,7 +35,7 @@
 /* Desktop: sources left, photo right */
 .stage {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch; /* strip height = photo height */
   gap: 1.25rem;
   width: 100%;
 }
@@ -44,13 +44,16 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  justify-content: flex-start;
   gap: 0.55rem;
   flex-shrink: 0;
   width: 108px;
-  max-height: min(70vh, 560px);
+  height: auto;
+  max-height: none;
+  align-self: stretch;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0.25rem 0.2rem 0.5rem 0;
+  padding: 0.15rem 0.2rem 0.15rem 0;
   scrollbar-width: thin;
   order: 0;
 }
@@ -127,6 +130,8 @@
   border-radius: 4px;
   order: 1;
   overflow: visible;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-img {
