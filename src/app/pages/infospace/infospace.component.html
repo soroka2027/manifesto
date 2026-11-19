@@ -6,15 +6,18 @@
     <p class="motto">{{ motto }}</p>
 
     <div class="stage" (mouseleave)="onStageLeave()">
-      <!-- Sources: left on desktop; under motto (before photo) on mobile -->
-      <div class="sources-strip" role="list">
+      <div
+        class="sources-strip"
+        role="list"
+        (scroll)="onStripScroll()">
         @for (s of sources; track s.id) {
           <button
             type="button"
             class="source-item"
             role="listitem"
+            [attr.data-source-id]="s.id"
             [class.active]="activeId === s.id"
-            (mouseenter)="onSourceEnter(s.id)"
+            (mouseenter)="onSourceEnter(s.id, $event)"
             (click)="onSourceActivate(s.id, $event)"
             [attr.aria-label]="currentLang === 'uk' ? s.nameUk : s.nameEn"
             [attr.aria-expanded]="activeId === s.id">
@@ -34,7 +37,6 @@
         }
       </div>
 
-      <!-- Hero: tip always top-left on photo -->
       <div class="hero-block" #heroBlock>
         <img
           src="assets/infospace-hero.jpg"
@@ -42,33 +44,54 @@
           [attr.alt]="currentLang === 'uk' ? 'Авторка в робочому просторі' : 'The author in her workspace'"
         />
 
+        <!-- Mobile / tablet: tip on photo (bottom-left) -->
         @if (active) {
           <div
-            class="preview-pop"
+            class="preview-pop mobile-pop"
             role="dialog"
             [attr.aria-label]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn">
-            <div class="preview-title">{{ currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn }}</div>
-            @if (active.preview1 || active.preview2) {
-              <div class="preview-images" [class.single]="!(active.preview1 && active.preview2)">
-                @if (active.preview1) {
-                  <div class="preview-shot">
-                    <img [src]="active.preview1" [attr.alt]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn" />
-                  </div>
-                }
-                @if (active.preview2) {
-                  <div class="preview-shot">
-                    <img [src]="active.preview2" alt="" />
-                  </div>
-                }
-              </div>
-            }
-            <p class="preview-comment">{{ currentLang === 'uk' ? active.commentUk : active.commentEn }}</p>
-            <a class="go-btn" [href]="active.link" target="_blank" rel="noopener noreferrer">
-              {{ goLabel }}
-            </a>
+            <ng-container *ngTemplateOutlet="tipBody"></ng-container>
           </div>
         }
       </div>
     </div>
+
+    <!-- Desktop: tip next to hovered source (fixed to viewport) -->
+    @if (active && showDesktopTip) {
+      <div
+        class="preview-pop desktop-pop"
+        role="dialog"
+        [style.top.px]="tipTop"
+        [style.left.px]="tipLeft"
+        [attr.aria-label]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn"
+        (mouseenter)="onTipEnter()"
+        (mouseleave)="onStageLeave()">
+        <ng-container *ngTemplateOutlet="tipBody"></ng-container>
+      </div>
+    }
   </main>
 </div>
+
+<ng-template #tipBody>
+  @if (active) {
+    <div class="preview-title">{{ currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn }}</div>
+    @if (active.preview1 || active.preview2) {
+      <div class="preview-images" [class.single]="!(active.preview1 && active.preview2)">
+        @if (active.preview1) {
+          <div class="preview-shot">
+            <img [src]="active.preview1" [attr.alt]="currentLang === 'uk' ? active.cardTitleUk : active.cardTitleEn" />
+          </div>
+        }
+        @if (active.preview2) {
+          <div class="preview-shot">
+            <img [src]="active.preview2" alt="" />
+          </div>
+        }
+      </div>
+    }
+    <p class="preview-comment">{{ currentLang === 'uk' ? active.commentUk : active.commentEn }}</p>
+    <a class="go-btn" [href]="active.link" target="_blank" rel="noopener noreferrer">
+      {{ goLabel }}
+    </a>
+  }
+</ng-template>

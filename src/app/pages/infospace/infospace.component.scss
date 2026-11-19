@@ -142,14 +142,8 @@
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
 }
 
-/* Desktop: tip top-left on photo — in front of her gaze */
+/* Shared tip card */
 .preview-pop {
-  position: absolute;
-  top: 5%;
-  bottom: auto;
-  left: 3.5%;
-  z-index: 5;
-  width: min(360px, 48%);
   background: rgba(255, 255, 255, 0.97);
   border-radius: 12px;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
@@ -157,6 +151,22 @@
   animation: fadeIn 0.2s ease;
   backdrop-filter: blur(4px);
   pointer-events: auto;
+  z-index: 20;
+}
+
+/* Desktop: beside the hovered source */
+.desktop-pop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(340px, 42vw);
+  transform: translateY(-50%);
+  z-index: 40;
+}
+
+/* Mobile tip on photo — hidden on desktop */
+.mobile-pop {
+  display: none;
 }
 
 @keyframes fadeIn {
@@ -284,12 +294,19 @@
     width: 100%;
   }
 
-  .preview-pop {
+  .desktop-pop {
+    display: none !important;
+  }
+
+  .mobile-pop {
+    display: block;
+    position: absolute;
     top: auto;
     bottom: 3.5%;
     left: 3%;
     width: min(300px, 78%);
     padding: 0.55rem 0.6rem 0.65rem;
+    transform: none;
   }
 
   .preview-shot img {
@@ -312,7 +329,7 @@
     font-size: 12px;
   }
 
-  .preview-pop {
+  .mobile-pop {
     width: min(280px, 84%);
     bottom: 3%;
   }

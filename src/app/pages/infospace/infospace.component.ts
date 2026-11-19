@@ -30,6 +30,9 @@ export class InfospaceComponent implements OnDestroy {
   @ViewChild('heroBlock') heroBlock?: ElementRef<HTMLElement>;
   currentLang: 'uk' | 'en' = 'uk';
   activeId: string | null = null;
+  tipTop = 0;
+  tipLeft = 0;
+  showDesktopTip = false;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
   private readonly hideDelayMs = 60_000;
 
@@ -261,10 +264,11 @@ export class InfospaceComponent implements OnDestroy {
     this.currentLang = lang;
   }
 
-  onSourceEnter(id: string) {
+  onSourceEnter(id: string, event?: Event) {
     if (this.isCoarsePointer()) return;
     this.clearHideTimer();
     this.setActive(id);
+    this.positionDesktopTip(event?.currentTarget as HTMLElement | undefined);
   }
 
   onStageLeave() {
@@ -281,6 +285,8 @@ export class InfospaceComponent implements OnDestroy {
       setTimeout(() => {
         this.heroBlock?.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 50);
+    } else {
+      this.positionDesktopTip(event.currentTarget as HTMLElement);
     }
   }
 
@@ -291,6 +297,7 @@ export class InfospaceComponent implements OnDestroy {
 
   clearActive() {
     this.activeId = null;
+    this.showDesktopTip = false;
     this.clearHideTimer();
   }
 
