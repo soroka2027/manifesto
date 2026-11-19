@@ -209,10 +209,14 @@ export class InfospaceComponent implements OnDestroy {
       iconText: 'U24',
       iconBg: '#0057b7',
       iconColor: '#ffd700',
-      cardTitleUk: 'UNITED24',
-      cardTitleEn: 'UNITED24',
-      commentUk: 'Офіційна платформа збору UNITED24.',
-      commentEn: 'Official UNITED24 fundraising platform.'
+      preview1: 'assets/sources/12-u24-preview1.jpg',
+      preview2: 'assets/sources/12-u24-preview2.jpg',
+      cardTitleUk: 'UNITED24 — допомога ЗСУ напряму',
+      cardTitleEn: 'UNITED24 — support for the Armed Forces, directly',
+      commentUk:
+        'Додаток UNITED24 — це швидкий і зручний спосіб підтримати захисників України без посередників. Кошти надходять напряму до підрозділів на передовій, тож тобі більше не потрібно шукати окремі збори чи непокоїтися щодо їхньої прозорості.',
+      commentEn:
+        'The UNITED24 app is a fast, convenient way to support Ukraine’s defenders without intermediaries. Funds go directly to units on the front line, so you no longer need to hunt for separate fundraisers or worry about their transparency.'
     },
     {
       id: 'bihus',
