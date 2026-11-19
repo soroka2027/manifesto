@@ -29,10 +29,8 @@ interface SourceItem {
 export class InfospaceComponent implements OnDestroy {
   @ViewChild('heroBlock') heroBlock?: ElementRef<HTMLElement>;
   currentLang: 'uk' | 'en' = 'uk';
-  /** Active source for tip (hover on desktop, tap on mobile) */
   activeId: string | null = null;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
-  /** 60s inactivity then tip closes (especially mobile) */
   private readonly hideDelayMs = 60_000;
 
   mottoUk =
@@ -61,87 +59,185 @@ export class InfospaceComponent implements OnDestroy {
     },
     {
       id: 'nabu',
-      nameUk: 'NABU',
+      nameUk: 'НАБУ',
       nameEn: 'NABU',
-      link: 'https://nabu.gov.ua/',
+      link: 'https://youtube.com/@nabuofficial',
       iconImg: null,
       iconText: '▲',
       iconBg: '#0a0a0a',
       iconColor: '#f5c518',
-      cardTitleUk: 'Національне антикорупційне бюро',
-      cardTitleEn: 'National Anti-Corruption Bureau',
-      commentUk: 'Офіційне джерело розслідувань топкорупції.',
-      commentEn: 'Official source of top-corruption investigations.'
+      cardTitleUk: 'НАБУ',
+      cardTitleEn: 'NABU',
+      commentUk: 'Офіційний канал Національного антикорупційного бюро України.',
+      commentEn: 'Official channel of the National Anti-Corruption Bureau of Ukraine.'
+    },
+    {
+      id: 'madyar',
+      nameUk: 'Мадяр',
+      nameEn: 'Madyar',
+      link: 'https://youtube.com/@magyarbirds',
+      iconImg: null,
+      iconText: 'М',
+      iconBg: '#1b4332',
+      iconColor: '#fff',
+      cardTitleUk: 'Мадяр',
+      cardTitleEn: 'Madyar',
+      commentUk: 'Канал підрозділу «Птахи Мадяра».',
+      commentEn: 'Channel of the “Birds of Madyar” unit.'
     },
     {
       id: 'up',
       nameUk: 'Українська правда',
       nameEn: 'Ukrainska Pravda',
-      link: 'https://www.pravda.com.ua/',
+      link: 'https://youtube.com/channel/UChparf_xrUZ_CJGQY5g4aEg',
       iconImg: null,
       iconText: 'УП',
       iconBg: '#7a1520',
       iconColor: '#fff',
       cardTitleUk: 'Українська правда',
       cardTitleEn: 'Ukrainska Pravda',
-      commentUk: 'Читаю, порівнюю, перевіряю факти.',
-      commentEn: 'I read, compare, check the facts.'
+      commentUk: 'YouTube-канал Української правди.',
+      commentEn: 'YouTube channel of Ukrainska Pravda.'
+    },
+    {
+      id: 'fedorov',
+      nameUk: 'Михайло Федоров',
+      nameEn: 'Mykhailo Fedorov',
+      link: 'https://www.facebook.com/share/1TmYF4udbQ/',
+      iconImg: null,
+      iconText: 'МФ',
+      iconBg: '#1877f2',
+      iconColor: '#fff',
+      cardTitleUk: 'Михайло Федоров',
+      cardTitleEn: 'Mykhailo Fedorov',
+      commentUk: 'Публікація Михайла Федорова у Facebook.',
+      commentEn: 'Mykhailo Fedorov’s Facebook post.'
     },
     {
       id: 'epytannia',
       nameUk: 'Є Питання',
       nameEn: 'Ye Pytannia',
-      link: 'https://www.youtube.com/@Yepytannia',
+      link: 'https://youtube.com/channel/UCLzoT0z2WwyDUAx8LHYzDJw',
       iconImg: null,
       iconText: 'є?',
-      iconBg: '#fff',
-      iconColor: '#111',
+      iconBg: '#ffffff',
+      iconColor: '#111111',
       cardTitleUk: 'Є Питання',
       cardTitleEn: 'Ye Pytannia',
-      commentUk: 'Один із джерел, де ставлю запитання і слухаю відповіді.',
-      commentEn: 'One of the sources where I ask questions and listen to answers.'
-    },
-    {
-      id: 'cpk',
-      nameUk: 'ЦПК',
-      nameEn: 'ANTAC',
-      link: 'https://antac.org.ua/',
-      iconImg: null,
-      iconText: 'цпк',
-      iconBg: '#111',
-      iconColor: '#fff',
-      cardTitleUk: 'Центр протидії корупції',
-      cardTitleEn: 'Anti-Corruption Action Center',
-      commentUk: 'Слідкую за їхньою роботою і розслідуваннями.',
-      commentEn: 'I follow their work and investigations.'
-    },
-    {
-      id: 'bihus',
-      nameUk: 'BIHUS Info',
-      nameEn: 'BIHUS Info',
-      link: 'https://bihus.info/',
-      iconImg: null,
-      iconText: 'Б',
-      iconBg: '#f5c518',
-      iconColor: '#111',
-      cardTitleUk: 'BIHUS Info',
-      cardTitleEn: 'BIHUS Info',
-      commentUk: 'Важливі розслідування — обов’язково дивлюсь.',
-      commentEn: 'Important investigations — I always watch.'
+      commentUk: 'YouTube-канал «Є Питання».',
+      commentEn: 'YouTube channel “Ye Pytannia”.'
     },
     {
       id: 'mokrec',
       nameUk: 'MokRec',
       nameEn: 'MokRec',
-      link: 'https://www.youtube.com/@MokRec',
+      link: 'https://youtube.com/@mokrec',
       iconImg: null,
       iconText: 'MR',
       iconBg: '#1a1a1a',
       iconColor: '#e63939',
       cardTitleUk: 'MokRec',
       cardTitleEn: 'MokRec',
-      commentUk: 'Дивлюся розбори і матеріали каналу.',
-      commentEn: 'I watch the channel’s breakdowns and materials.'
+      commentUk: 'YouTube-канал MokRec.',
+      commentEn: 'MokRec YouTube channel.'
+    },
+    {
+      id: 'cpk',
+      nameUk: 'ЦПК',
+      nameEn: 'ANTAC',
+      link: 'https://youtube.com/@antac_ukraine',
+      iconImg: null,
+      iconText: 'цпк',
+      iconBg: '#111111',
+      iconColor: '#ffffff',
+      cardTitleUk: 'Центр протидії корупції',
+      cardTitleEn: 'Anti-Corruption Action Center',
+      commentUk: 'YouTube-канал Центру протидії корупції.',
+      commentEn: 'YouTube channel of the Anti-Corruption Action Center.'
+    },
+    {
+      id: 'censor',
+      nameUk: 'Цензор.НЕТ',
+      nameEn: 'Censor.NET',
+      link: 'https://youtube.com/@censor_net',
+      iconImg: null,
+      iconText: 'ЦН',
+      iconBg: '#c1121f',
+      iconColor: '#ffffff',
+      cardTitleUk: 'Цензор.НЕТ',
+      cardTitleEn: 'Censor.NET',
+      commentUk: 'YouTube-канал Цензор.НЕТ.',
+      commentEn: 'Censor.NET YouTube channel.'
+    },
+    {
+      id: 'znua',
+      nameUk: 'ZN,UA',
+      nameEn: 'ZN,UA',
+      link: 'https://zn.ua/ukr/POLITICS/virodzhennja-vladi-jak-zelenskij-dosjah-svojeji-steli-a-sistema-derzhupravlinnja-dna.html',
+      iconImg: null,
+      iconText: 'ZN',
+      iconBg: '#0d1b2a',
+      iconColor: '#e0e1dd',
+      cardTitleUk: 'Дзеркало тижня',
+      cardTitleEn: 'Dzerkalo Tyzhnia',
+      commentUk: 'Стаття: «Виродження влади…» — zn.ua.',
+      commentEn: 'Article: “The degeneration of power…” — zn.ua.'
+    },
+    {
+      id: 'radionv',
+      nameUk: 'Radio NV',
+      nameEn: 'Radio NV',
+      link: 'https://youtube.com/@radionvua',
+      iconImg: null,
+      iconText: 'NV',
+      iconBg: '#e63946',
+      iconColor: '#ffffff',
+      cardTitleUk: 'Radio NV',
+      cardTitleEn: 'Radio NV',
+      commentUk: 'YouTube-канал Radio NV.',
+      commentEn: 'Radio NV YouTube channel.'
+    },
+    {
+      id: 'united24',
+      nameUk: 'UNITED24',
+      nameEn: 'UNITED24',
+      link: 'https://u24app.gov.ua/s/nxIQO0M3fF',
+      iconImg: null,
+      iconText: 'U24',
+      iconBg: '#0057b7',
+      iconColor: '#ffd700',
+      cardTitleUk: 'UNITED24',
+      cardTitleEn: 'UNITED24',
+      commentUk: 'Офіційна платформа збору UNITED24.',
+      commentEn: 'Official UNITED24 fundraising platform.'
+    },
+    {
+      id: 'bihus',
+      nameUk: 'BIHUS Info',
+      nameEn: 'BIHUS Info',
+      link: 'https://youtube.com/@bihusinfo',
+      iconImg: null,
+      iconText: 'Б',
+      iconBg: '#f5c518',
+      iconColor: '#111111',
+      cardTitleUk: 'BIHUS Info',
+      cardTitleEn: 'BIHUS Info',
+      commentUk: 'YouTube-канал BIHUS Info.',
+      commentEn: 'BIHUS Info YouTube channel.'
+    },
+    {
+      id: 'tytanovi',
+      nameUk: 'TYTANOVI',
+      nameEn: 'TYTANOVI',
+      link: 'https://youtube.com/@tytanovi-rehab',
+      iconImg: null,
+      iconText: 'Т',
+      iconBg: '#2d3436',
+      iconColor: '#dfe6e9',
+      cardTitleUk: 'TYTANOVI',
+      cardTitleEn: 'TYTANOVI',
+      commentUk: 'YouTube-канал TYTANOVI (реабілітація).',
+      commentEn: 'TYTANOVI YouTube channel (rehab).'
     }
   ];
 
@@ -165,30 +261,22 @@ export class InfospaceComponent implements OnDestroy {
     this.currentLang = lang;
   }
 
-  /** Desktop: hover opens tip */
   onSourceEnter(id: string) {
     if (this.isCoarsePointer()) return;
     this.clearHideTimer();
     this.setActive(id);
   }
 
-  /** Desktop: leaving the whole stage can clear; keep tip while moving between sources */
   onStageLeave() {
     if (this.isCoarsePointer()) return;
-    // Short delay so cursor can move from icon to tip on the photo
     this.clearHideTimer();
     this.hideTimer = setTimeout(() => this.clearActive(), 280);
   }
 
-  /**
-   * Mobile/tablet: first tap selects & shows tip, does NOT navigate.
-   * Desktop click also selects (hover already did).
-   */
   onSourceActivate(id: string, event: Event) {
     event.preventDefault();
     event.stopPropagation();
     this.setActive(id);
-    // Mobile: bring photo + fixed tip into view
     if (this.isCoarsePointer()) {
       setTimeout(() => {
         this.heroBlock?.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
