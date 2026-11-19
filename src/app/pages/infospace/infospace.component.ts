@@ -313,6 +313,39 @@ export class InfospaceComponent implements OnDestroy {
     }
   }
 
+
+  onTipEnter() {
+    this.clearHideTimer();
+  }
+
+  onStripScroll() {
+    if (!this.activeId || this.isCoarsePointer()) return;
+    const el = document.querySelector(
+      `.source-item[data-source-id="${this.activeId}"]`
+    ) as HTMLElement | null;
+    this.positionDesktopTip(el ?? undefined);
+  }
+
+  private positionDesktopTip(anchor?: HTMLElement) {
+    if (!anchor || this.isCoarsePointer()) {
+      this.showDesktopTip = false;
+      return;
+    }
+    const r = anchor.getBoundingClientRect();
+    const gap = 14;
+    const tipWidth = 340;
+    let left = r.right + gap;
+    if (left + tipWidth > window.innerWidth - 12) {
+      left = Math.max(12, r.left - tipWidth - gap);
+    }
+    let top = r.top + r.height / 2;
+    const estH = 280;
+    top = Math.min(Math.max(top, estH / 2 + 8), window.innerHeight - estH / 2 - 8);
+    this.tipTop = top;
+    this.tipLeft = left;
+    this.showDesktopTip = true;
+  }
+
   private isCoarsePointer(): boolean {
     return typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
   }
