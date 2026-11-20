@@ -111,10 +111,14 @@ export class InfospaceComponent implements OnDestroy {
       iconText: 'МФ',
       iconBg: '#1877f2',
       iconColor: '#fff',
-      cardTitleUk: 'Михайло Федоров',
-      cardTitleEn: 'Mykhailo Fedorov',
-      commentUk: 'Публікація Михайла Федорова у Facebook.',
-      commentEn: 'Mykhailo Fedorov’s Facebook post.'
+      preview1: 'assets/sources/5-fedorov-preview1.jpg',
+      preview2: 'assets/sources/5-fedorov-preview2.jpg',
+      cardTitleUk: 'Михайло Федоров — політик',
+      cardTitleEn: 'Mykhailo Fedorov — politician',
+      commentUk:
+        'Вважаю, що скасування виборів в Україні знищує саме те, за що ведеться наша боротьба — вільна, демократична Україна, де український народ, а не одна людина, є джерелом влади.\n\nСвітова історія знає випадки, коли країни проводили вибори навіть під час жорстоких воєн, щоб зберегти суть вільної держави та довіру народу до влади.',
+      commentEn:
+        'I believe that cancelling elections in Ukraine destroys exactly what our struggle is for — a free, democratic Ukraine where the Ukrainian people, not one person, are the source of power.\n\nWorld history knows cases when countries held elections even during brutal wars, to preserve the essence of a free state and public trust in government.'
     },
     {
       id: 'epytannia',
