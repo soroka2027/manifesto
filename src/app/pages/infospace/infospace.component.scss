@@ -24,38 +24,35 @@
 }
 
 .motto {
-  margin: 0 0 1.1rem;
-  max-width: 640px;
+  margin: 0 0 1rem;
+  max-width: 720px;
   font-size: 15px;
   font-weight: 400;
   line-height: 145%;
   color: #333;
 }
 
-/* Desktop: sources left, photo right */
+/* Unified: strip above photo on all breakpoints */
 .stage {
   display: flex;
-  align-items: stretch; /* strip height = photo height */
-  gap: 1.25rem;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.85rem;
   width: 100%;
 }
 
 .sources-strip {
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  gap: 0.55rem;
-  flex-shrink: 0;
-  width: 108px;
-  height: auto;
-  max-height: none;
-  align-self: stretch;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0.15rem 0.2rem 0.15rem 0;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0.1rem 0.55rem;
   scrollbar-width: thin;
-  order: 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .source-item {
@@ -63,7 +60,8 @@
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
-  width: 100%;
+  min-width: 76px;
+  flex-shrink: 0;
   border: none;
   background: transparent;
   padding: 0.25rem 0.15rem;
@@ -71,7 +69,7 @@
   font-family: inherit;
   color: #222;
   cursor: pointer;
-  transition: color 0.15s ease, background 0.15s ease;
+  transition: color 0.15s ease;
 
   &:hover,
   &.active {
@@ -126,13 +124,9 @@
 
 .hero-block {
   position: relative;
-  flex: 1;
-  min-width: 0;
+  width: 100%;
   border-radius: 4px;
-  order: 1;
   overflow: visible;
-  display: flex;
-  flex-direction: column;
 }
 
 .hero-img {
@@ -143,8 +137,14 @@
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
 }
 
-/* Shared tip card */
+/* Tip: top-left on photo — free space before her gaze */
 .preview-pop {
+  position: absolute;
+  top: 4%;
+  left: 3%;
+  bottom: auto;
+  z-index: 5;
+  width: min(360px, 46%);
   background: rgba(255, 255, 255, 0.97);
   border-radius: 12px;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
@@ -152,22 +152,6 @@
   animation: fadeIn 0.2s ease;
   backdrop-filter: blur(4px);
   pointer-events: auto;
-  z-index: 20;
-}
-
-/* Desktop: beside the hovered source */
-.desktop-pop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: min(340px, 42vw);
-  transform: translateY(-50%);
-  z-index: 40;
-}
-
-/* Mobile tip on photo — hidden on desktop */
-.mobile-pop {
-  display: none;
 }
 
 @keyframes fadeIn {
@@ -208,16 +192,17 @@
   img {
     display: block;
     width: 100%;
-    height: 72px;
+    height: 78px;
     object-fit: cover;
   }
 }
 
 .preview-comment {
   margin: 0.45rem 0.1rem 0.5rem;
-  font-size: 12px;
+  font-size: 12.5px;
   line-height: 145%;
   color: #222;
+  white-space: pre-wrap;
 }
 
 .go-btn {
@@ -247,7 +232,6 @@
   }
 }
 
-/* Mobile / tablet: motto → strip → photo; tip stays top-left on photo */
 @media (max-width: 960px) {
   .page {
     flex-direction: column;
@@ -266,48 +250,11 @@
     margin-bottom: 0.85rem;
   }
 
-  .stage {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .sources-strip {
-    order: 0;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 100%;
-    max-height: none;
-    overflow-x: auto;
-    overflow-y: hidden;
-    gap: 0.9rem;
-    padding: 0.15rem 0.1rem 0.5rem;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .source-item {
-    width: auto;
-    min-width: 72px;
-    flex-shrink: 0;
-  }
-
-  .hero-block {
-    order: 1;
-    width: 100%;
-  }
-
-  .desktop-pop {
-    display: none !important;
-  }
-
-  .mobile-pop {
-    display: block;
-    position: absolute;
-    top: auto;
-    bottom: 3.5%;
-    left: 3%;
+  .preview-pop {
     width: min(300px, 78%);
+    top: 3%;
+    left: 3%;
     padding: 0.55rem 0.6rem 0.65rem;
-    transform: none;
   }
 
   .preview-shot img {
@@ -330,9 +277,8 @@
     font-size: 12px;
   }
 
-  .mobile-pop {
+  .preview-pop {
     width: min(280px, 84%);
-    bottom: 3%;
   }
 
   .preview-comment {

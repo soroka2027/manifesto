@@ -276,7 +276,6 @@ export class InfospaceComponent implements OnDestroy {
     if (this.isCoarsePointer()) return;
     this.clearHideTimer();
     this.setActive(id);
-    this.positionDesktopTip(event?.currentTarget as HTMLElement | undefined);
   }
 
   onStageLeave() {
@@ -293,8 +292,6 @@ export class InfospaceComponent implements OnDestroy {
       setTimeout(() => {
         this.heroBlock?.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 50);
-    } else {
-      this.positionDesktopTip(event.currentTarget as HTMLElement);
     }
   }
 
