@@ -78,15 +78,18 @@ export class InfospaceComponent implements OnDestroy {
       id: 'madyar',
       nameUk: 'Мадяр',
       nameEn: 'Madyar',
-      link: 'https://youtube.com/@magyarbirds',
+      link: 'https://t.me/robert_magyar',
       iconImg: 'assets/sources/3-magyarbirds.jpg',
       iconText: 'М',
       iconBg: '#1b4332',
       iconColor: '#fff',
-      cardTitleUk: 'Мадяр',
-      cardTitleEn: 'Madyar',
-      commentUk: 'Канал підрозділу «Птахи Мадяра».',
-      commentEn: 'Channel of the “Birds of Madyar” unit.'
+      preview1: 'assets/sources/3-madyar-preview1.jpg',
+      cardTitleUk: 'МАДЯР — Командувач СБС ЗСУ 🇺🇦',
+      cardTitleEn: 'MADYAR — Commander of SBS AFU 🇺🇦',
+      commentUk:
+        'Інформація на вагу золота і наша вдячність і 🖤 не має меж.',
+      commentEn:
+        'Information worth its weight in gold — and our gratitude 🖤 knows no bounds.'
     },
     {
       id: 'up',
