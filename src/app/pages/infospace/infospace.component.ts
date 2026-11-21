@@ -250,10 +250,13 @@ export class InfospaceComponent implements OnDestroy {
       iconText: 'Т',
       iconBg: '#2d3436',
       iconColor: '#dfe6e9',
-      cardTitleUk: 'TYTANOVI',
-      cardTitleEn: 'TYTANOVI',
-      commentUk: 'YouTube-канал TYTANOVI (реабілітація).',
-      commentEn: 'TYTANOVI YouTube channel (rehab).'
+      preview1: 'assets/sources/14-tytanovi-preview1.jpg',
+      cardTitleUk: 'Канал протезно-реабілітаційного центру TYTANOVI',
+      cardTitleEn: 'Channel of the TYTANOVI prosthetic rehabilitation center',
+      commentUk:
+        'Велика вдячність і шана нашим Захисникам!\nСил Вам і благополучного відновлення!',
+      commentEn:
+        'Deep gratitude and respect to our Defenders!\nStrength to you and a successful recovery!'
     }
   ];
 
