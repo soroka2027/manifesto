@@ -60,6 +60,23 @@ export class InfospaceComponent implements OnDestroy {
         'A people’s gallery of protest signs. The voice of the people.\nA cardboard is a few words someone wrote by hand and took to the street. Here they remain.'
     },
     {
+      id: 'nabu',
+      nameUk: 'НАБУ',
+      nameEn: 'NABU',
+      link: 'https://youtu.be/dLGhaHbWCAA',
+      iconImg: 'assets/sources/2-nabu.jpg',
+      iconText: '▲',
+      iconBg: '#0a0a0a',
+      iconColor: '#f5c518',
+      preview1: 'assets/sources/2-nabu-preview1.jpg',
+      cardTitleUk: 'Офіційний YouTube-канал Національного антикорупційного бюро України (НАБУ)',
+      cardTitleEn: 'Official YouTube channel of the National Anti-Corruption Bureau of Ukraine (NABU)',
+      commentUk:
+        'Дуже вдячні Вам НАБУ і САП!!! ❤❤❤\nВи неймовірно хоробрі! І ми з Вами повністю солідарні у боротьбі із корупцією!\n\nУ мене питання до тих, хто каже, що вибори не на часі і вони можуть зачекати до кінця війни. Як з таким рівнем топ-корупції і мафіізації можна розраховувати не те що на перемогу, а хочаб вистояти.',
+      commentEn:
+        'Deep gratitude to NABU and SAPO!!! ❤❤❤\nYou are incredibly brave. We stand fully with you in the fight against corruption.\n\nA question to those who say elections are not timely and can wait until the war ends: with this level of top-level corruption and mafioso capture, how can one count not on victory — but even on holding the line?'
+    },
+    {
       id: 'madyar',
       nameUk: 'Мадяр',
       nameEn: 'Madyar',
