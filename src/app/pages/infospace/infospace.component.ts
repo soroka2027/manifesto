@@ -51,28 +51,13 @@ export class InfospaceComponent implements OnDestroy {
       iconText: '',
       iconBg: '#111',
       iconColor: '#fff',
-      preview1: 'assets/source-kartonky-preview1.png',
-      preview2: 'assets/source-kartonky-preview2.jpg',
+      preview1: 'assets/sources/1-kartonky-preview1.jpg',
       cardTitleUk: 'Картонки — голоси з площі',
       cardTitleEn: 'Kartonky — voices from the square',
       commentUk:
-        'Народна галерея протестних плакатів. Картонка — це кілька слів, які хтось написав від руки і виніс на вулицю. Тут вони залишаються. Голос народу.',
+        'Народна галерея протестних плакатів. Голос народу.\nКартонка — це кілька слів, які хтось написав від руки і виніс на вулицю. Тут вони залишаються.',
       commentEn:
-        'A people’s gallery of protest signs. A cardboard is a few words someone wrote by hand and took to the street. Here they remain. The voice of the people.'
-    },
-    {
-      id: 'nabu',
-      nameUk: 'НАБУ',
-      nameEn: 'NABU',
-      link: 'https://youtube.com/@nabuofficial',
-      iconImg: 'assets/sources/2-nabu.jpg',
-      iconText: '▲',
-      iconBg: '#0a0a0a',
-      iconColor: '#f5c518',
-      cardTitleUk: 'НАБУ',
-      cardTitleEn: 'NABU',
-      commentUk: 'Офіційний канал Національного антикорупційного бюро України.',
-      commentEn: 'Official channel of the National Anti-Corruption Bureau of Ukraine.'
+        'A people’s gallery of protest signs. The voice of the people.\nA cardboard is a few words someone wrote by hand and took to the street. Here they remain.'
     },
     {
       id: 'madyar',
