@@ -190,10 +190,13 @@ export class InfospaceComponent implements OnDestroy {
       iconText: 'ZN',
       iconBg: '#0d1b2a',
       iconColor: '#e0e1dd',
+      preview1: 'assets/sources/10-znua-preview1.jpg',
       cardTitleUk: 'Дзеркало тижня',
       cardTitleEn: 'Dzerkalo Tyzhnia',
-      commentUk: 'Стаття: «Виродження влади…» — zn.ua.',
-      commentEn: 'Article: “The degeneration of power…” — zn.ua.'
+      commentUk:
+        'Дякую, Інно!\nЗеленський нам і партнерам каже: скільки буде тривати війна, стільки і буде його влада. Але, тривалість війни визначається бажанням кремля воювати з Україною. Отже виходить, що тепер вже НЕ народ України вирішує - хто буде лідером його нації, а путін.\n\nКартонкові протести - це факт КАТЕГОРИЧНОЇ незгоди українців із діючою владою, це ЧІТКИЙ знак того, що владі не вдасться перетворити Україну в анти-демократію!\n\nЩоб бути сильними і успішно протистояти ворогу, і вистояти у цій страшній і невідомо скільки тривалій війні, нам необхідно зняти внутрішню суспільну напругу і знову об\'єднати суспільство!\n\nВИБОРИ - це момент найбільшої єдності суспільства. Момент прояснення усіх деталей суспільного договору. Момент згоди меншості із більшістю щодо лідера нації, якому увесь загал віддає верховну владу на суворо обмежений термін.',
+      commentEn:
+        'Thank you, Inna!\nZelenskyy tells us and our partners: as long as the war lasts, so will his power. But the duration of the war is determined by the Kremlin’s will to fight Ukraine. So it turns out that it is no longer the people of Ukraine who decide who will lead their nation — it is Putin.\n\nThe cardboard protests are a fact of CATEGORICAL disagreement by Ukrainians with the current authorities, a CLEAR sign that the authorities will not succeed in turning Ukraine into an anti-democracy!\n\nTo be strong and successfully resist the enemy, and to hold out in this terrible war of unknown length, we need to ease internal social tension and reunite society!\n\nELECTIONS are the moment of greatest unity in society. A moment of clarifying every detail of the social contract. A moment when the minority agrees with the majority on the nation’s leader, to whom the whole public entrusts supreme power for a strictly limited term.'
     },
     {
       id: 'radionv',
