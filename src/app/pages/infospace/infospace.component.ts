@@ -239,10 +239,13 @@ export class InfospaceComponent implements OnDestroy {
       iconText: 'Б',
       iconBg: '#f5c518',
       iconColor: '#111111',
+      preview1: 'assets/sources/13-bihus-preview1.jpg',
       cardTitleUk: 'BIHUS Info',
       cardTitleEn: 'BIHUS Info',
-      commentUk: 'YouTube-канал BIHUS Info.',
-      commentEn: 'BIHUS Info YouTube channel.'
+      commentUk:
+        'Дякую, BIHUS Info!\n\nWahnsinn! Цей безкінечний як ця війна серіал про Зе-епоху - un genre trash-absurde-cringe-horreur.\n\nЗе-ельдорадо для Зе-обраних під Зе-парасолькою у Зе-раю.\nА народу - безкінечна війна і пенсія на місяць у 50 євро.\n\nУ Зе-соцліфті від безробітної Зе-красотулі до Зе-депутатки і Зе-світськоїлевиці.\nА народу - безкінечна війна і пенсія на місяць у 50 євро.',
+      commentEn:
+        'Thank you, BIHUS Info!\n\nWahnsinn! This endless-as-the-war series about the Ze-era — un genre trash-absurde-cringe-horreur.\n\nA Ze-eldorado for the Ze-chosen under the Ze-umbrella in Ze-paradise.\nAnd for the people — an endless war and a monthly pension of 50 euros.\n\nIn the Ze-social lift from an unemployed Ze-beauty to a Ze-MP and Ze-society lioness.\nAnd for the people — an endless war and a monthly pension of 50 euros.'
     },
     {
       id: 'tytanovi',
