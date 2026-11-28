@@ -148,10 +148,13 @@ export class InfospaceComponent implements OnDestroy {
       iconText: 'MR',
       iconBg: '#1a1a1a',
       iconColor: '#e63939',
-      cardTitleUk: 'MokRec',
-      cardTitleEn: 'MokRec',
-      commentUk: 'YouTube-канал MokRec.',
-      commentEn: 'MokRec YouTube channel.'
+      preview1: 'assets/sources/7-mokrec-preview1.jpg',
+      cardTitleUk: 'YouTube-канал Данила Мокрика',
+      cardTitleEn: 'YouTube channel of Danylo Mokryk',
+      commentUk:
+        'Дякую, Данило!\nОце так тема для дебатів: “В умовах війни національна безпека має пріоритет над антикорупційною прозорістю”.\nKrass! Das ist echt manipulativ.\n\nОскільки антикорупційна прозорість є КРИТИЧНО ВАЖЛИВИМ ЕЛЕМЕНТОМ НАЦІОНАЛЬНОЇ БЕЗПЕКИ!\nТо ці дебати нам пропонують зважити усі за і проти і все ж таки обрати між національною безпекою і національною безпекою.\nOh là là! Складний вибір, мені не під силу.',
+      commentEn:
+        'Thank you, Danylo!\nWhat a topic for debate: “In wartime, national security should take priority over anti-corruption transparency.”\nKrass! Das ist echt manipulativ.\n\nSince anti-corruption transparency is a CRITICALLY IMPORTANT ELEMENT OF NATIONAL SECURITY,\nthese debates invite us to weigh the pros and cons and somehow choose between national security and national security.\nOh là là! A hard choice — beyond me.'
     },
     {
       id: 'cpk',
